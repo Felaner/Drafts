@@ -5,6 +5,7 @@
 @import url('styles/carousel.css');
 @import url('styles/navbar.css');
 @import url('styles/main.css');
+@import url('styles/contacts.css');
 @import url('styles/footer.css');
 @import url('styles/media.css');
 
@@ -26,4 +27,8 @@ span.rl-line {
     height: 2px;
     background-color: #DBDBDB;
     border-radius: 2px;
- }
+}
+
+.l-0 {
+    left: 0;
+}

@@ -1,0 +1,18 @@
+.contacts ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contacts ul li{
+    padding: 5px;
+}
+
+.contacts ul li span{
+    margin-right: 5px;
+    width: 35px;
+}
+
+.contacts ul li span img{
+    width: 35px;
+}
