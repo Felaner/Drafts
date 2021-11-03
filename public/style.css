@@ -2,17 +2,22 @@
 @import url('fonts.css');
 @import url('styles/font-sizes.css');
 @import url('bootstrap/css/bootstrap.min.css');
+@import url('styles/carousel.css');
 @import url('styles/navbar.css');
 @import url('styles/main.css');
 @import url('styles/footer.css');
 @import url('styles/media.css');
 
-h1 {
-
-}
-
 span.underline {
     border-bottom: #DE1B1B solid 4px;
+    border-radius: 10px;
+}
+
+span.rl-line {
+    padding: 0 10px;
+    border-left: #DE1B1B solid 2px;
+    border-right: #DE1B1B solid 2px;
+    border-radius: 10px;
 }
 
 .divider{
