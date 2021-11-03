@@ -1,10 +1,16 @@
 @media (max-width: 1199px) {
-
+    .advantage-plus {
+        width: 230px;
+    }
 }
 
 @media (max-width: 767px) {
     .f-26 {
         font-size: 20px;
+    }
+    .advantage-plus {
+        width: 400px;
+        padding: 20px 20px;
     }
 }
 
