@@ -13,6 +13,7 @@ const app = express();
 const homeRoute = require('./routes/home');
 const draftsRoute = require('./routes/drafts');
 const contactsRoute = require('./routes/contacts');
+const advantageRoute = require('./routes/advantage');
 
 const keys = require('./keys');
 
@@ -33,6 +34,7 @@ app.use(express.urlencoded({extended: true}));
 app.use('/', homeRoute);
 app.use('/drafts', draftsRoute);
 app.use('/contacts', contactsRoute);
+app.use('/advantage', advantageRoute);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
