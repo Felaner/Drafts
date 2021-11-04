@@ -7,10 +7,11 @@
 @import url('styles/main.css');
 @import url('styles/contacts.css');
 @import url('styles/advantage.css');
+@import url('styles/form.css');
 @import url('styles/footer.css');
 @import url('styles/media.css');
 
-span.underline {
+span.underline, p.underline {
     border-bottom: #DE1B1B solid 4px;
     border-radius: 10px;
 }

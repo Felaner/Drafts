@@ -1,0 +1,27 @@
+.form-box {
+    background-color: #363636;
+    padding: 30px;
+    color: #ffffff;
+}
+
+#submittedMessageBox {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 25%;
+    height: 25%;
+    overflow: auto;
+    margin: auto;
+    position: fixed;
+    padding: 10px;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 999;
+    background-color: #c7c7c7;;
+    border: 2px solid green;
+    border-radius: 10px;
+}
+
+#submittedMessageBox p {
+    margin: 0;
+}
