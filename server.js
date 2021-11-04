@@ -14,6 +14,7 @@ const homeRoute = require('./routes/home');
 const draftsRoute = require('./routes/drafts');
 const contactsRoute = require('./routes/contacts');
 const advantageRoute = require('./routes/advantage');
+const archdraftRoute = require('./routes/archdraft');
 
 const keys = require('./keys');
 
@@ -35,6 +36,7 @@ app.use('/', homeRoute);
 app.use('/drafts', draftsRoute);
 app.use('/contacts', contactsRoute);
 app.use('/advantage', advantageRoute);
+app.use('/archdraft', archdraftRoute);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
