@@ -1,23 +1,53 @@
 @media (max-width: 1199px) {
     .advantage-plus {
-        width: 230px;
+        height: 353px;
+    }
+    .advantage p.underline {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 991px) {
+    .advantage-plus {
+        height: 423px;
+    }
+    .advantage .how-build > div:nth-child(3n+2) p.underline {
+        height: 50px;
     }
 }
 
 @media (max-width: 767px) {
+    #submittedMessageBox {
+        width: 50%;
+    }
     .f-26 {
         font-size: 20px;
     }
     .advantage-plus {
-        width: 400px;
-        padding: 20px 20px;
+        height: auto;
+    }
+    .advantage .how-build > div:nth-child(3n+2) p.underline {
+        height: 30px;
+    }
+    .advantage p.underline {
+        margin-top: 10px;
     }
 }
 
 @media (max-width: 575px) {
-
+    #submittedMessageBox p {
+        font-size: 14px;
+    }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 398px) {
+    .advantage .how-build > div:nth-child(2) p.underline {
+        height: 50px;
+    }
+}
 
+@media (max-width: 366px) {
+    .advantage .how-build > div:nth-child(5) p.underline {
+        height: 50px;
+    }
 }
