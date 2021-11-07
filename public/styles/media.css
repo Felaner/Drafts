@@ -50,4 +50,8 @@
     .advantage .how-build > div:nth-child(5) p.underline {
         height: 50px;
     }
+
+    .f-44 {
+        font-size: 36px;
+    }
 }

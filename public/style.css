@@ -34,3 +34,7 @@ span.rl-line {
 .l-0 {
     left: 0;
 }
+
+li::marker{
+    color: #DE1B1B;
+}
