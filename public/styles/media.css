@@ -54,4 +54,8 @@
     .f-44 {
         font-size: 36px;
     }
+
+    .draft-video iframe{
+        height: 200px;
+    }
 }
