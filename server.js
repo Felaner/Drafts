@@ -14,7 +14,6 @@ const homeRoute = require('./routes/home');
 const draftsRoute = require('./routes/drafts');
 const contactsRoute = require('./routes/contacts');
 const advantageRoute = require('./routes/advantage');
-const archdraftRoute = require('./routes/archdraft');
 
 const keys = require('./keys');
 
@@ -33,10 +32,9 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.urlencoded({extended: true}));
 
 app.use('/', homeRoute);
-app.use('/drafts', draftsRoute);
-app.use('/contacts', contactsRoute);
-app.use('/advantage', advantageRoute);
-app.use('/archdraft', archdraftRoute);
+app.use('/chertezhi', draftsRoute);
+app.use('/kontakty', contactsRoute);
+app.use('/preimushchestva', advantageRoute);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
