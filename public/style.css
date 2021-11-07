@@ -38,3 +38,42 @@ span.rl-line {
 li::marker{
     color: #DE1B1B;
 }
+
+ul.breadcrumbs li {
+    display: inline-block;
+    line-height: 20px;
+    margin: 0 5px 0 -10px;
+    padding: 0 20px;
+    position: relative;
+    font-size: 13px;
+}
+ul.breadcrumbs li:before,
+ul.breadcrumbs li:after {
+    border-right: 3px solid #DE1B1B;
+    content: '';
+    display: block;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    transform: skewX(45deg);
+}
+ul.breadcrumbs li:after {
+    bottom: 0;
+    top: auto;
+    transform: skewX(-45deg);
+}
+ul.breadcrumbs li:last-of-type:before,
+ul.breadcrumbs li:last-of-type:after {
+    display: none;
+}
+ul.breadcrumbs li a {
+    color: #000;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+ul.breadcrumbs li a:hover {
+    color: #DE1B1B;
+}
