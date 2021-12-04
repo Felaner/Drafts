@@ -14,6 +14,9 @@ const homeRoute = require('./routes/home');
 const draftsRoute = require('./routes/drafts');
 const contactsRoute = require('./routes/contacts');
 const advantageRoute = require('./routes/advantage');
+const portfolioRoute = require('./routes/portfolio');
+
+const errorHandler = require('./middleware/error');
 
 const keys = require('./keys');
 
@@ -35,6 +38,9 @@ app.use('/', homeRoute);
 app.use('/chertezhi', draftsRoute);
 app.use('/kontakty', contactsRoute);
 app.use('/preimushchestva', advantageRoute);
+app.use('/portfolio', portfolioRoute);
+
+app.use(errorHandler);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

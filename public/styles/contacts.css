@@ -20,3 +20,13 @@
 .contacts-map{
     width: 70%;
 }
+
+.contacts a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.contacts a:hover{
+    text-decoration: none;
+    color: #DE1B1B;
+}

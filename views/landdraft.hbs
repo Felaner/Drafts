@@ -41,7 +41,15 @@
             <span class="sr-only">Следующий</span>
         </a>
     </div>
-    
+
+    <div class="row justify-content-center">
+        {{#each images}}
+            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                <img src="../images/maket/landshaft/{{this}}" alt="draft" class="w-100 d-block img-fluid small-image">
+            </div>
+        {{/each}}
+    </div>
+
     <div class="row">
         <div class="col-12 align-items-center">
             <p class="f-24 text-center">

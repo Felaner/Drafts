@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     try {
         if (!req.body) return res.sendStatus(400);
         const {name, phone, areaMessage} = req.body;
