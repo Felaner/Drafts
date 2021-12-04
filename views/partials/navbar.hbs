@@ -1,17 +1,17 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <div class="col-md-3 col-12">
-            <a class="navbar-brand pl-md-5" href="#">
-                <div style="width: 200px; height: 80px; border: 1px solid black;"></div>
+        <div class="col-md-3 col-12 d-flex justify-content-center justify-content-md-start">
+            <a class="navbar-brand pl-md-5 mr-0" href="/">
+                <img src="/images/logo/logo.svg" alt="logo" height="120">
             </a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
+        <button class="navbar-toggler col-12" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="col-md-8 col-12 offset-md-1 offset-0">
             <div class="collapse navbar-collapse justify-content-end pr-md-5" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/">Главная <span class="sr-only">(текущая)</span></a>
                     </li>
                     <li class="nav-item dropdown">
@@ -20,7 +20,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="/preimushchestva">Наши преимущества</a>
-                            <a class="dropdown-item submenu" href="#">Наши макеты</a>
+                            <a class="dropdown-item submenu d-none d-lg-block" href="#">Наши макеты</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="/chertezhi/arkhitekturniy">Архитектурный макет</a>
                                 <a class="dropdown-item" href="/chertezhi/kontseptualniy">Концептуальный макет</a>
@@ -29,11 +29,17 @@
                                 <a class="dropdown-item" href="/chertezhi/podarochniy">Подарочный макет</a>
                                 <a class="dropdown-item" href="/chertezhi/promyshlenniy">Промышленный макет</a>
                             </div>
+                            <a class="dropdown-item d-block d-lg-none" href="/chertezhi/arkhitekturniy">Архитектурный макет</a>
+                            <a class="dropdown-item d-block d-lg-none" href="/chertezhi/kontseptualniy">Концептуальный макет</a>
+                            <a class="dropdown-item d-block d-lg-none" href="/chertezhi/landshaftniy">Ландшафтный макет</a>
+                            <a class="dropdown-item d-block d-lg-none text-wrap" href="/chertezhi/interaktivniy">Макет с интерактивной подсветкой</a>
+                            <a class="dropdown-item d-block d-lg-none" href="/chertezhi/podarochniy">Подарочный макет</a>
+                            <a class="dropdown-item d-block d-lg-none" href="/chertezhi/promyshlenniy">Промышленный макет</a>
                             <a class="dropdown-item text-wrap" href="/chertezhi">Готовые чертежи по графическому моделированию и инженерной графике </a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Портфолио</a>
+                        <a class="nav-link" href="/portfolio">Портфолио</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/kontakty">Контакты</a>

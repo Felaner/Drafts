@@ -1,4 +1,26 @@
 $(function (){
+    if ( $(window).width() > 767 ) {
+        $(".small-image").click(function(){
+            let img = $(this);
+            let src = img.attr('src');
+            $("body").append(
+                "<div class='popup'>"+
+                "<div class='popup_bg'></div>"+
+                "<img src='"+src+"' class='popup_img' />"+
+                "</div>"
+            );
+            $(".popup").fadeIn(200);
+            $(".popup").click(function(){
+                $(".popup").fadeOut(200);
+                setTimeout(function() {
+                    $(".popup").remove();
+                }, 200);
+            });
+        });
+    }
+})
+
+$(function (){
     $("#form").submit(function (e) {
         let $form = $(this)
         let result = true

@@ -10,3 +10,11 @@ footer ul {
 footer li, footer a, footer p {
     color: #ffffff;
 }
+
+footer a {
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #DE1B1B;
+}

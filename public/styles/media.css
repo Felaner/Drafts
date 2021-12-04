@@ -1,4 +1,7 @@
 @media (max-width: 1199px) {
+    .contacts .f-20 {
+        font-size: 18px;
+    }
     .advantage-plus {
         height: 353px;
     }
@@ -17,6 +20,9 @@
 }
 
 @media (max-width: 767px) {
+    .small-image {
+        cursor: default;
+    }
     #submittedMessageBox {
         width: 50%;
     }
@@ -35,6 +41,16 @@
 }
 
 @media (max-width: 575px) {
+    .f-38 {
+        font-size: 32px;
+    }
+    .divider {
+        margin: 25px 0;
+    }
+    .nav-tabs .nav-item {
+        width: 100%;
+        text-align: center;
+    }
     #submittedMessageBox p {
         font-size: 14px;
     }
