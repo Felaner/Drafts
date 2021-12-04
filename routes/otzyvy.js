@@ -5,8 +5,9 @@ const router = Router();
 const fs = require('fs');
 
 router.get('/', (req, res) => {
-    res.render('drafts', {
-        title: 'Готовые чертежи'
+    res.render('otzyvy', {
+        title: 'Отзывы',
+        isOtzyvy: true
     });
 });
 

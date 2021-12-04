@@ -11,10 +11,13 @@ const path = require('path');
 const app = express();
 
 const homeRoute = require('./routes/home');
-const draftsRoute = require('./routes/drafts');
-const contactsRoute = require('./routes/contacts');
 const advantageRoute = require('./routes/advantage');
+const otzyvyRoute = require('./routes/otzyvy');
+const contactsRoute = require('./routes/contacts');
+const layoutsRoute = require('./routes/layouts');
+const draftsRoute = require('./routes/drafts');
 const portfolioRoute = require('./routes/portfolio');
+const adminRoute = require('./routes/admin');
 
 const errorHandler = require('./middleware/error');
 
@@ -35,10 +38,13 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.urlencoded({extended: true}));
 
 app.use('/', homeRoute);
-app.use('/chertezhi', draftsRoute);
-app.use('/kontakty', contactsRoute);
 app.use('/preimushchestva', advantageRoute);
+app.use('/otzyvy', otzyvyRoute);
+app.use('/kontakty', contactsRoute);
+app.use('/makety', layoutsRoute);
+app.use('/chertezhi', draftsRoute);
 app.use('/portfolio', portfolioRoute);
+app.use('/admin', adminRoute);
 
 app.use(errorHandler);
 
