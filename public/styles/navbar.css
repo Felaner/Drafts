@@ -33,3 +33,22 @@ nav .nav-item.active > .nav-link {
 .dropdown-item:hover + .dropdown-menu, .dropdown-menu:hover {
     display: block;
 }
+
+.navbar .button {
+    padding: 4px 10px;
+}
+
+.navbar .phone {
+    text-decoration: none;
+    color: #000000;
+    transition: 0.3s;
+}
+
+.navbar .phone:hover {
+    text-decoration: none;
+    color: #DE1B1B;
+}
+
+.navbar .nav-link {
+    font-size: 16px;
+}

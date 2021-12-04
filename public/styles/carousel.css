@@ -18,3 +18,19 @@
     height: 700px;
     width: 100%;
 }
+
+#firstCarousel {
+    width: 80%;
+}
+
+.home-carousel {
+    height: 550px;
+}
+
+.home-carousel img{
+    height: 550px;
+}
+
+#firstCarousel .carousel-indicators {
+    bottom: -20px;
+}
