@@ -9,3 +9,12 @@
 .carousel-indicators li {
     background-color: #DE1B1B;
 }
+
+.arch-carousel{
+    height: 700px;
+}
+
+.arch-carousel img{
+    height: 700px;
+    width: 100%;
+}
