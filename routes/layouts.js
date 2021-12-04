@@ -11,7 +11,7 @@ const fs = require('fs');
 // });
 
 
-router.get('/arkhitekturniy', (req, res) => {
+router.get('/arkhitekturniy_maket', (req, res) => {
     const folder = 'public/images/maket/arch';
     let images = fs.readdirSync(folder)
     res.render('archdraft', {
@@ -20,7 +20,7 @@ router.get('/arkhitekturniy', (req, res) => {
     });
 });
 
-router.get('/kontseptualniy', (req, res) => {
+router.get('/kontseptualniy_maket', (req, res) => {
     const folder = 'public/images/maket/concept';
     let images = fs.readdirSync(folder)
     res.render('conceptdraft', {
@@ -29,7 +29,7 @@ router.get('/kontseptualniy', (req, res) => {
     });
 });
 
-router.get('/landshaftniy', (req, res) => {
+router.get('/landshaftniy_maket', (req, res) => {
     const folder = 'public/images/maket/landshaft';
     let images = fs.readdirSync(folder)
     res.render('landdraft', {
@@ -38,7 +38,7 @@ router.get('/landshaftniy', (req, res) => {
     });
 });
 
-router.get('/interaktivniy', (req, res) => {
+router.get('/interaktivniy_maket', (req, res) => {
     const folder = 'public/images/maket/interactive';
     let images = fs.readdirSync(folder)
     res.render('interdraft', {
@@ -47,7 +47,7 @@ router.get('/interaktivniy', (req, res) => {
     });
 });
 
-router.get('/podarochniy', (req, res) => {
+router.get('/podarochniy_maket', (req, res) => {
     const folder = 'public/images/maket/podar';
     let images = fs.readdirSync(folder)
     res.render('giftdraft', {
@@ -56,7 +56,7 @@ router.get('/podarochniy', (req, res) => {
     });
 });
 
-router.get('/promyshlenniy', (req, res) => {
+router.get('/promyshlenniy_maket', (req, res) => {
     const folder = 'public/images/maket/promish';
     let images = fs.readdirSync(folder)
     res.render('promdraft', {
