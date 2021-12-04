@@ -17,7 +17,7 @@ const contactsRoute = require('./routes/contacts');
 const layoutsRoute = require('./routes/layouts');
 const draftsRoute = require('./routes/drafts');
 const portfolioRoute = require('./routes/portfolio');
-const adminRoute = require('./routes/admin');
+// const adminRoute = require('./routes/admin'); АДМИНКА
 
 const errorHandler = require('./middleware/error');
 
@@ -44,7 +44,7 @@ app.use('/kontakty', contactsRoute);
 app.use('/makety', layoutsRoute);
 app.use('/chertezhi', draftsRoute);
 app.use('/portfolio', portfolioRoute);
-app.use('/admin', adminRoute);
+// app.use('/admin', adminRoute); АДМИНКА
 
 app.use(errorHandler);
 
