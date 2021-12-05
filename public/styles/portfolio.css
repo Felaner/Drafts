@@ -1,0 +1,19 @@
+.second-slider{
+    height: 500px;
+}
+
+.img-tab{
+    width: 100px;
+    height: 100px;
+}
+
+.tabs-scroll{
+    max-width: 500px;
+    height: 120px;
+    overflow: auto;
+    white-space:nowrap;
+}
+
+.nav-item{
+    display: inline-block;
+}
