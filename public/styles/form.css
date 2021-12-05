@@ -2,6 +2,47 @@
     background-color: #363636;
     padding: 30px;
     color: #ffffff;
+    width: 600px;
+}
+
+.form-box label {
+    font-size: 14px;
+}
+
+.form-box input::placeholder,
+.form-box textarea::placeholder,
+.form-box option {
+    font-size: 14px;
+}
+
+.form-box option {
+    color: #000000;
+}
+
+.form-box .form-control {
+    border: 1px solid #ffffff;
+    border-radius: unset;
+    background: none;
+    color: #ffffff;
+}
+
+.form-box .form-control:focus {
+    box-shadow: unset;
+}
+
+.form-box select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("../images/icons/Polygon.svg") calc(100% - 5px) 50% no-repeat;
+}
+
+.form-box .button {
+    padding: 10px 40px;
+}
+
+.form-box label {
+    margin-bottom: 4px;
 }
 
 #submittedMessageBox {
