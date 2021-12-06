@@ -1,9 +1,18 @@
 @media (max-width: 1199px) {
+    .f-44{
+        font-size: 40px;
+    }
+    .f-24{
+        font-size: 22px;
+    }
     .contacts .f-20 {
         font-size: 18px;
     }
     .advantage-plus {
-        height: 353px;
+        height: 450px;
+        width: 350px;
+        margin: 0 auto;
+        margin-bottom: 20px;
     }
     .advantage p.underline {
         font-size: 15px;
@@ -11,8 +20,20 @@
 }
 
 @media (max-width: 991px) {
+    .f-44{
+        font-size: 36px;
+    }
+    .f-32{
+        font-size: 30px;
+    }
+    .f-24{
+        font-size: 20px;
+    }
     .advantage-plus {
-        height: 423px;
+        height: 450px;
+        width: 350px;
+        margin: 0 auto;
+        margin-bottom: 20px;
     }
     .advantage .how-build > div:nth-child(3n+2) p.underline {
         height: 50px;
