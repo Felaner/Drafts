@@ -1,6 +1,6 @@
 <!--Форма-->
 <div id="submittedMessageBox"></div>
-<form action="/preimushchestva" method="POST" id="form">
+<form action="/preimushchestva" method="POST" id="form" enctype="multipart/form-data">
     <h3 class="col-12 text-center pb-1">Закажите макет</h3>
     <div class="row">
         <div class="col-6">
@@ -26,7 +26,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="selectScale">Масштаб макета:</label>
-                <select class="form-control" name="scale" id="selectScale">
+                <select class="form-control required" name="scale" id="selectScale">
                     <option value="" disabled selected hidden>Выберите масштаб</option>
                     <option value="1:50">1:50</option>
                     <option value="1:100">1:100</option>
@@ -47,7 +47,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="selectDetailing">Степень детализации:</label>
-                <select class="form-control" name="detailing" id="selectDetailing">
+                <select class="form-control required" name="detailing" id="selectDetailing">
                     <option value="" disabled selected hidden>Выберите степень</option>
                     <option value="Высокая">Высокая</option>
                     <option value="Средняя">Средняя</option>
@@ -60,7 +60,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="selectBacklight">Нужна ли подсветка?</label>
-                <select class="form-control" name="backlight" id="selectBacklight">
+                <select class="form-control required" name="backlight" id="selectBacklight">
                     <option value="" disabled selected hidden>Выберите</option>
                     <option value="Да">Да</option>
                     <option value="Нет">Нет</option>
@@ -70,7 +70,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="selectGlass">Нужен ли стеклянный колпак?</label>
-                <select class="form-control" name="glass" id="selectGlass">
+                <select class="form-control required" name="glass" id="selectGlass">
                     <option value="" disabled selected hidden>Выберите</option>
                     <option value="Да">Да</option>
                     <option value="Нет">Нет</option>
@@ -82,7 +82,7 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="selectStand">Нужны ли ножки или тумба к подмакетнику?</label>
-                <select class="form-control" name="stand" id="selectStand">
+                <select class="form-control required" name="stand" id="selectStand">
                     <option value="" disabled selected hidden>Выберите</option>
                     <option value="Да">Да</option>
                     <option value="Нет">Нет</option>
@@ -94,7 +94,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="selectShipping">Нужен ли транспортировочный кофр?</label>
-                <select class="form-control" name="shipping" id="selectShipping">
+                <select class="form-control required" name="shipping" id="selectShipping">
                     <option value="" disabled selected hidden>Выберите</option>
                     <option value="Да">Да</option>
                     <option value="Нет">Нет</option>
@@ -104,7 +104,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="selectDelivery">Нужна ли доставка?</label>
-                <select class="form-control" name="delivery" id="selectDelivery">
+                <select class="form-control required" name="delivery" id="selectDelivery">
                     <option value="" disabled selected hidden>Выберите</option>
                     <option value="Да">Да</option>
                     <option value="Нет">Нет</option>
@@ -116,7 +116,14 @@
         <div class="col-12">
             <div class="form-group">
                 <label for="textareaMessage">Примечания</label>
-                <textarea class="form-control" name="message" id="textareaMessage" cols="30" rows="5" placeholder="Введите сообщение"></textarea>
+                <textarea class="form-control" name="areaMessage" id="textareaMessage" cols="30" rows="5" placeholder="Введите сообщение"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <p class="text-center">Изображения или файлы отправляйте на почту <a class="link" href="mailto:axon15@yandex.ru">axon15@yandex.ru</a>. Не забудьте указать в письме ваше имя, а также номер телефона или email.</p>
             </div>
         </div>
     </div>

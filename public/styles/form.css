@@ -2,7 +2,7 @@
     background-color: #363636;
     padding: 30px;
     color: #ffffff;
-    max-width: 600px;
+    width: 600px;
 }
 
 .form-box label {
@@ -45,7 +45,7 @@
     margin-bottom: 4px;
 }
 
-#submittedMessageBox {
+#submittedMessageBox, #callSubmittedMessageBox {
     display: none;
     align-items: center;
     justify-content: center;
@@ -59,11 +59,13 @@
     top: 0; left: 0; bottom: 0; right: 0;
     z-index: 999;
     background-color: #c7c7c7;;
-    border: 2px solid green;
+    border: 2px solid #DE1B1B;
     border-radius: 10px;
 }
 
-#submittedMessageBox p {
+#submittedMessageBox p, #callSubmittedMessageBox p {
+    display: inline;
+    vertical-align: center;
     margin: 0;
 }
 
@@ -93,4 +95,17 @@
 
 .close:hover {
     color: #DE1B1B;
+}
+
+.form-box .form-control.error-input {
+    border-color: #DE1B1B;
+}
+
+.form-box .link {
+    text-decoration: none;
+    color: #DE1B1B;
+}
+
+.form-box .link:hover {
+    text-decoration: none;
 }

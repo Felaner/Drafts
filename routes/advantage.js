@@ -15,12 +15,21 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         if (!req.body) return res.sendStatus(400);
-        const {name, phone, areaMessage} = req.body;
+        const {name, contacts, object, scale, size, detailing, backlight, glass, stand, shipping, delivery, areaMessage} = req.body;
         const message = {
             to: "kirill.deykun1@gmail.com",
             html: `<ul>` +
-                `<li>Имя: ${name}</li>` +
-                `<li>Телефон: ${phone}</li>` +
+                `<li>ФИО: ${name}</li>` +
+                `<li>Контакты: ${contacts}</li>` +
+                `<li>Какой объект нужно сделать?: ${object}</li>` +
+                `<li>Масштаб макета: ${scale}</li>` +
+                `<li>Размер макета: ${size}</li>` +
+                `<li>Степень детализации: ${detailing}</li>` +
+                `<li>Нужна ли подсветка?: ${backlight}</li>` +
+                `<li>Нужен ли стеклянный колпак?: ${glass}</li>` +
+                `<li>Нужны ли ножки или тумба к подмакетнику?: ${stand}</li>` +
+                `<li>Нужен ли транспортировочный кофр?: ${shipping}</li>` +
+                `<li>Нужна ли доставка?: ${delivery}</li>` +
                 `<li>Сообщение: ${areaMessage}</li>` +
                 `</ul>`
         }
