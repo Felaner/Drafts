@@ -41,6 +41,15 @@
 }
 
 @media (max-width: 767px) {
+    .f-44{
+        font-size: 32px;
+    }
+    .f-32{
+        font-size: 28px;
+    }
+    .f-24{
+        font-size: 18px;
+    }
     .small-image {
         cursor: default;
     }
@@ -62,6 +71,9 @@
 }
 
 @media (max-width: 575px) {
+    .f-44{
+        font-size: 30px;
+    }
     .f-38 {
         font-size: 32px;
     }

@@ -24,11 +24,11 @@
 }
 
 .home-carousel {
-    height: 550px;
+    max-height: 550px;
 }
 
 .home-carousel img{
-    height: 550px;
+    max-height: 550px;
 }
 
 #firstCarousel .carousel-indicators {
