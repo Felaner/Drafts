@@ -102,10 +102,7 @@
 }
 
 .form-box .link {
-    text-decoration: none;
-    color: #DE1B1B;
-}
-
-.form-box .link:hover {
-    text-decoration: none;
+    color: #ffffff;
+    text-decoration: unset;
+    border-bottom: 1px solid #DE1B1B;
 }

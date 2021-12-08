@@ -20,6 +20,12 @@ $(function (){
     }
 })
 
+$(function () {
+    $('.scrolling-img').click(function () {
+        $('.full-img').attr('src', $(this).attr('src'))
+    });
+})
+
 $(function (){
     $('button.close').click(function () {
         $('#callForm')[0].reset();

@@ -34,3 +34,48 @@
 #firstCarousel .carousel-indicators {
     bottom: -20px;
 }
+
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #DE1B1B #ffffff;
+}
+
+.scrolling-wrapper img {
+    margin: 0 6px;
+    flex: 0 0 auto;
+}
+
+.scrolling-wrapper img:first-child {
+    margin-left: 0;
+}
+.scrolling-wrapper img:last-child {
+    margin-right: 0;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+    width: 12px;               /* ширина scrollbar */
+}
+.scrolling-wrapper::-webkit-scrollbar-track {
+    background: #ffffff;        /* цвет дорожки */
+}
+.scrolling-wrapper::-webkit-scrollbar-thumb {
+    background-color: #DE1B1B;    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 3px solid #ffffff;  /* padding вокруг плашки */
+}
+
+.full-img-wrapper {
+    height: 350px;
+}
+
+#portfolioCarousel .carousel-control-next, .carousel-control-prev {
+    position: relative;
+}
+
+#portfolioCarousel .carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 40px;
+    height: 40px;
+}
