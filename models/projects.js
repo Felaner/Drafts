@@ -12,12 +12,32 @@ const project = sequelize.define('Project', {
         allowNull: false,
         type: Sequelize.STRING
     },
+    scale: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    size: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    time: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    customer: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    customerUrl: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
     type: {
         type: Sequelize.STRING,
         allowNull: false
     },
     description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false
     }
 });
@@ -43,15 +63,6 @@ const image = sequelize.define('Image', {
         foreignKey : true
     }
 })
-
-// const fullProject = sequelize.define('fullProject', {
-//     id: {
-//         primaryKey: true,
-//         autoIncrement: true,
-//         allowNull: false,
-//         type: Sequelize.INTEGER
-//     }
-// })
 
 project.hasMany(image, {foreignKey : 'ProjectId'});
 image.belongsTo(project, {foreignKey : 'ProjectId'})

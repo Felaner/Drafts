@@ -21,6 +21,20 @@ $(function (){
 })
 
 $(function () {
+    $('#archPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
+    $('#conceptPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
+    $('#landPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
+    $('#interPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
+    $('#giftPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
+    $('#promPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
+    $('#anyPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
+    $('#archPortCarousel .carousel-item').slice(0, 1).addClass('active')
+    $('#conceptPortCarousel .carousel-item').slice(0, 1).addClass('active')
+    $('#landPortCarousel .carousel-item').slice(0, 1).addClass('active')
+    $('#interPortCarousel .carousel-item').slice(0, 1).addClass('active')
+    $('#giftPortCarousel .carousel-item').slice(0, 1).addClass('active')
+    $('#promPortCarousel .carousel-item').slice(0, 1).addClass('active')
+    $('#anyPortCarousel .carousel-item').slice(0, 1).addClass('active')
     $('.scrolling-img').click(function () {
         $('.full-img').attr('src', $(this).attr('src'))
     });

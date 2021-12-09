@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container portfolio">
     <div class="row m-sm-3 m-0">
         <ul class="breadcrumbs p-0">
             <li>
@@ -14,31 +14,392 @@
         <div class="col-12">
             <ul class="nav nav-pills mb-3 portfolio-tabs" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-arch" role="tab" aria-controls="pills-home" aria-selected="true">Архитектурные</a>
+                    <a class="nav-link active" id="pills-arch-tab" data-toggle="pill" href="#pills-arch" role="tab" aria-controls="pills-arch" aria-selected="true">Архитектурные</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-concept" role="tab" aria-controls="pills-profile" aria-selected="false">Концептуальные</a>
+                    <a class="nav-link" id="pills-concept-tab" data-toggle="pill" href="#pills-concept" role="tab" aria-controls="pills-concept" aria-selected="false">Концептуальные</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-land" role="tab" aria-controls="pills-contact" aria-selected="false">Ландшафтные</a>
+                    <a class="nav-link" id="pills-land-tab" data-toggle="pill" href="#pills-land" role="tab" aria-controls="pills-land" aria-selected="false">Ландшафтные</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-inter" role="tab" aria-controls="pills-contact" aria-selected="false">С интерактивной подсветкой</a>
+                    <a class="nav-link" id="pills-inter-tab" data-toggle="pill" href="#pills-inter" role="tab" aria-controls="pills-inter" aria-selected="false">С интерактивной подсветкой</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-gift" role="tab" aria-controls="pills-contact" aria-selected="false">Подарочные</a>
+                    <a class="nav-link" id="pills-gift-tab" data-toggle="pill" href="#pills-gift" role="tab" aria-controls="pills-gift" aria-selected="false">Подарочные</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-prom" role="tab" aria-controls="pills-contact" aria-selected="false">Промышленные</a>
+                    <a class="nav-link" id="pills-prom-tab" data-toggle="pill" href="#pills-prom" role="tab" aria-controls="pills-prom" aria-selected="false">Промышленные</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-anything-tab" data-toggle="pill" href="#pills-anything" role="tab" aria-controls="pills-anything" aria-selected="false">Прочее</a>
                 </li>
             </ul>
+
+<!--            Архитектурные-->
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-arch" role="tabpanel" aria-labelledby="pills-arch-tab">Архитектурный</div>
-                <div class="tab-pane fade" id="pills-concept" role="tabpanel" aria-labelledby="pills-concept-tab">Концептуальные</div>
-                <div class="tab-pane fade" id="pills-land" role="tabpanel" aria-labelledby="pills-land-tab">Ландшафтные</div>
-                <div class="tab-pane fade" id="pills-inter" role="tabpanel" aria-labelledby="pills-inter-tab">С интерактивной подсветкой</div>
-                <div class="tab-pane fade" id="pills-gift" role="tabpanel" aria-labelledby="pills-gift-tab">Подарочные</div>
-                <div class="tab-pane fade" id="pills-prom" role="tabpanel" aria-labelledby="pills-prom-tab">Промышленные</div>
+                <div class="tab-pane fade show active" id="pills-arch" role="tabpanel" aria-labelledby="pills-arch-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="archPortCarousel" class="carousel slide mb-5" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {{#each arch}}
+                                        <li data-target="#archPortCarousel" data-slide-to="{{this.[index]}}"></li>
+                                    {{/each}}
+                                </ol>
+                                <div class="carousel-inner">
+                                    {{#each arch}}
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="full-img-wrapper mb-2">
+                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                    </div>
+                                                    <div class="scrolling-wrapper">
+                                                        {{#each this.Images}}
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" height="100px" width="150px">
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="slider-info col-lg-4">
+                                                        <div class="slider-title">{{this.name}}</div>
+                                                        <div class="slider-scale">Масштаб:{{this.scale}}</div>
+                                                        <div class="slider-size">Размер:{{this.size}}</div>
+                                                        <div class="slider-time">Срок изготовления:{{this.time}}</div>
+                                                        <div class="slider-customer">Заказчик:
+                                                             <a href="{{this.customerUrl}}">{{this.customer}}</a></div>
+                                                        <div class="slider-description">Описание: {{this.description}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <div class="row justify-content-between mt-3">
+                                    <a class="carousel-control-prev" href="#archPortCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Предыдущий</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#archPortCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Следующий</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--                Концептуальные-->
+                <div class="tab-pane fade" id="pills-concept" role="tabpanel" aria-labelledby="pills-concept-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="conceptPortCarousel" class="carousel slide mb-5" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {{#each concept}}
+                                        <li data-target="#conceptPortCarousel" data-slide-to="{{this.[index]}}"></li>
+                                    {{/each}}
+                                </ol>
+                                <div class="carousel-inner">
+                                    {{#each concept}}
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-lg-7">
+                                                    <div class="full-img-wrapper mb-2">
+                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                    </div>
+                                                    <div class="scrolling-wrapper">
+                                                        {{#each this.Images}}
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" height="100px" width="150px">
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                                <div class="slider-info col-lg-5">
+                                                        <p class="slider-title f-20 font-weight-bold text-center">{{this.name}}</p>
+                                                        <p class="slider-scale"><span class="red-underline">Масштаб:</span> {{this.scale}}</p>
+                                                        <p class="slider-size"><span class="red-underline">Размер:</span> {{this.size}}</p>
+                                                        <p class="slider-time"><span class="red-underline">Срок изготовления:</span> {{this.time}}</p>
+                                                        <p class="slider-customer"><span class="red-underline">Заказчик:</span>                                                              <a href="{{this.customerUrl}}">{{this.customer}}</a></p>
+                                                        <p class="slider-description"><span class="red-underline">Описание:</span> {{this.description}}</p>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <div class="row justify-content-between mt-3">
+                                    <a class="carousel-control-prev" href="#conceptPortCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Предыдущий</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#conceptPortCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Следующий</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--                Ландшафтные-->
+                <div class="tab-pane fade" id="pills-land" role="tabpanel" aria-labelledby="pills-land-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="landPortCarousel" class="carousel slide mb-5" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {{#each land}}
+                                        <li data-target="#landPortCarousel" data-slide-to="{{this.[index]}}"></li>
+                                    {{/each}}
+                                </ol>
+                                <div class="carousel-inner">
+                                    {{#each land}}
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="full-img-wrapper mb-2">
+                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                    </div>
+                                                    <div class="scrolling-wrapper">
+                                                        {{#each this.Images}}
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" height="100px" width="150px">
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                                <div class="slider-info col-lg-4">
+                                                        <div class="slider-title">{{this.name}}</div>
+                                                        <div class="slider-scale">Масштаб:{{this.scale}}</div>
+                                                        <div class="slider-size">Размер:{{this.size}}</div>
+                                                        <div class="slider-time">Срок изготовления:{{this.time}}</div>
+                                                        <div class="slider-customer">Заказчик:
+                                                             <a href="{{this.customerUrl}}">{{this.customer}}</a></div>
+                                                        <div class="slider-description">Описание: {{this.description}}</div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <div class="row justify-content-between mt-3">
+                                    <a class="carousel-control-prev" href="#landPortCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Предыдущий</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#landPortCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Следующий</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--                С интерактивной подсветкой-->
+                <div class="tab-pane fade" id="pills-inter" role="tabpanel" aria-labelledby="pills-inter-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="interPortCarousel" class="carousel slide mb-5" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {{#each inter}}
+                                        <li data-target="#interPortCarousel" data-slide-to="{{this.[index]}}"></li>
+                                    {{/each}}
+                                </ol>
+                                <div class="carousel-inner">
+                                    {{#each inter}}
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="full-img-wrapper mb-2">
+                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                    </div>
+                                                    <div class="scrolling-wrapper">
+                                                        {{#each this.Images}}
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" height="100px" width="150px">
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                                <div class="slider-info col-lg-4">
+                                                        <div class="slider-title">{{this.name}}</div>
+                                                        <div class="slider-scale">Масштаб:{{this.scale}}</div>
+                                                        <div class="slider-size">Размер:{{this.size}}</div>
+                                                        <div class="slider-time">Срок изготовления:{{this.time}}</div>
+                                                        <div class="slider-customer">Заказчик:
+                                                             <a href="{{this.customerUrl}}">{{this.customer}}</a></div>
+                                                        <div class="slider-description">Описание: {{this.description}}</div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <div class="row justify-content-between mt-3">
+                                    <a class="carousel-control-prev" href="#interPortCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Предыдущий</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#interPortCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Следующий</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--                Подарочные-->
+                <div class="tab-pane fade" id="pills-gift" role="tabpanel" aria-labelledby="pills-gift-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="giftPortCarousel" class="carousel slide mb-5" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {{#each gift}}
+                                        <li data-target="#giftPortCarousel" data-slide-to="{{this.[index]}}"></li>
+                                    {{/each}}
+                                </ol>
+                                <div class="carousel-inner">
+                                    {{#each gift}}
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="full-img-wrapper mb-2">
+                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                    </div>
+                                                    <div class="scrolling-wrapper">
+                                                        {{#each this.Images}}
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" height="100px" width="150px">
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                                <div class="slider-info col-lg-4">
+                                                        <div class="slider-title">{{this.name}}</div>
+                                                        <div class="slider-scale">Масштаб:{{this.scale}}</div>
+                                                        <div class="slider-size">Размер:{{this.size}}</div>
+                                                        <div class="slider-time">Срок изготовления:{{this.time}}</div>
+                                                        <div class="slider-customer">Заказчик:
+                                                             <a href="{{this.customerUrl}}">{{this.customer}}</a></div>
+                                                        <div class="slider-description">Описание: {{this.description}}</div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <div class="row justify-content-between mt-3">
+                                    <a class="carousel-control-prev" href="#giftPortCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Предыдущий</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#giftPortCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Следующий</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--                Промышленные-->
+                <div class="tab-pane fade" id="pills-prom" role="tabpanel" aria-labelledby="pills-prom-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="promPortCarousel" class="carousel slide mb-5" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {{#each prom}}
+                                        <li data-target="#promPortCarousel" data-slide-to="{{this.[index]}}"></li>
+                                    {{/each}}
+                                </ol>
+                                <div class="carousel-inner">
+                                    {{#each prom}}
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="full-img-wrapper mb-2">
+                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                    </div>
+                                                    <div class="scrolling-wrapper">
+                                                        {{#each this.Images}}
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" height="100px" width="150px">
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                                <div class="slider-info col-lg-4">
+                                                        <div class="slider-title">{{this.name}}</div>
+                                                        <div class="slider-scale">Масштаб:{{this.scale}}</div>
+                                                        <div class="slider-size">Размер:{{this.size}}</div>
+                                                        <div class="slider-time">Срок изготовления:{{this.time}}</div>
+                                                        <div class="slider-customer">Заказчик:
+                                                             <a href="{{this.customerUrl}}">{{this.customer}}</a></div>
+                                                        <div class="slider-description">Описание: {{this.description}}</div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <div class="row justify-content-between mt-3">
+                                    <a class="carousel-control-prev" href="#promPortCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Предыдущий</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#promPortCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Следующий</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-anything" role="tabpanel" aria-labelledby="pills-anything-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="anyPortCarousel" class="carousel slide mb-5" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {{#each anything}}
+                                        <li data-target="#anyPortCarousel" data-slide-to="{{this.[index]}}"></li>
+                                    {{/each}}
+                                </ol>
+                                <div class="carousel-inner">
+                                    {{#each anything}}
+                                        <div class="carousel-item">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="full-img-wrapper mb-2">
+                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                    </div>
+                                                    <div class="scrolling-wrapper">
+                                                        {{#each this.Images}}
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" height="100px" width="150px">
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                                <div class="slider-info col-lg-4">
+                                                        <div class="slider-title">{{this.name}}</div>
+                                                        <div class="slider-scale">Масштаб:{{this.scale}}</div>
+                                                        <div class="slider-size">Размер:{{this.size}}</div>
+                                                        <div class="slider-time">Срок изготовления:{{this.time}}</div>
+                                                        <div class="slider-customer">Заказчик:
+                                                             <a href="{{this.customerUrl}}">{{this.customer}}</a></div>
+                                                        <div class="slider-description">Описание: {{this.description}}</div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                                <div class="row justify-content-between mt-3">
+                                    <a class="carousel-control-prev" href="#anyPortCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Предыдущий</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#anyPortCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Следующий</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -49,96 +410,6 @@
     {{#if isAuth}}
         <a class="button ml-2" href="/portfolio/add">Добавить проект в портфолио</a>
     {{/if}}
-    <div class="row">
-        <div class="col-12">
-            <div id="portfolioCarousel" class="carousel slide mb-5" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#portfolioCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#portfolioCarousel" data-slide-to="1"></li>
-                    <li data-target="#portfolioCarousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="full-img-wrapper mb-2">
-                                    <img src="" alt="" class="full-img" width="100%" height="100%">
-                                </div>
-                                <div class="scrolling-wrapper">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/home/1.jpg" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                    <img src="images/example.png" class="scrolling-img" alt="#" height="100px" width="150px">
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="slider-info">
-                                    <div class="slider-title">Арзитектурный макет</div>
-                                    <div class="slider-subtitle">Параметры</div>
-                                    <div class="slider-description"> описание</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-between mt-3">
-                    <a class="carousel-control-prev" href="#portfolioCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Предыдущий</span>
-                    </a>
-                    <a class="carousel-control-next" href="#portfolioCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Следующий</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!--    <div class="row">-->
-<!--        <div class="col-lg-8">-->
-<!--            <div id="portfolioCarousel2" class="carousel slide mb-5" data-ride="carousel">-->
-<!--                <ol class="carousel-indicators">-->
-<!--                    <li data-target="#portfolioCarousel2" data-slide-to="0" class="active"></li>-->
-<!--                    <li data-target="#portfolioCarousel2" data-slide-to="1"></li>-->
-<!--                    <li data-target="#portfolioCarousel2" data-slide-to="2"></li>-->
-<!--                </ol>-->
-<!--                <div class="carousel-inner second-slider">-->
-<!--                    <div class="carousel-item active">-->
-<!--                        <img src="../images/maket/arch/1. 2ee07e6e-8352-4732-9c31-b2f1ec54c5d6.webp" class="d-block w-100" alt="example">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="../images/maket/arch/2. fa53eccf-bdeb-466b-baa4-f114414d8968.webp" class="d-block w-100" alt="example">-->
-<!--                    </div>-->
-<!--                    <div class="carousel-item">-->
-<!--                        <img src="../images/maket/arch/10. fece5139-1d77-4bcc-a9ad-82554193ad57.webp" class="d-block w-100" alt="example">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <a class="carousel-control-prev" href="#portfolioCarousel2" role="button" data-slide="prev">-->
-<!--                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--                    <span class="sr-only">Предыдущий</span>-->
-<!--                </a>-->
-<!--                <a class="carousel-control-next" href="#portfolioCarousel2" role="button" data-slide="next">-->
-<!--                    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--                    <span class="sr-only">Следующий</span>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-lg-4">-->
-<!--            <div class="slider-info">-->
-<!--                <div class="slider-title">Арзитектурный макет</div>-->
-<!--                <div class="slider-subtitle">Параметры</div>-->
-<!--                <div class="slider-description"> описание</div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
     <div class="row justify-content-center">
         <div class="form-box">
             {{>form}}

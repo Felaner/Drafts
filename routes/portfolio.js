@@ -8,14 +8,107 @@ const sharp = require('sharp');
 const { project: Project, image: Image } = require('../models/projects')
 
 router.get('/', async (req, res) => {
+    const result = [];
     await Project.findAll({
+        where: {
+            type: 'Архитектурный макет'
+        },
         include: {
             model: Image
-        }
-    }).then(result => {
+        },
+        order: [
+            [Image, 'name', 'ASC']
+        ]
+    }).then(arch => {
+        result.push(arch)
+    })
+    await Project.findAll({
+        where: {
+            type: 'Концептуальный макет'
+        },
+        include: {
+            model: Image
+        },
+        order: [
+            [Image, 'id', 'ASC']
+        ]
+    }).then(concept => {
+        result.push(concept)
+    })
+    await Project.findAll({
+        where: {
+            type: 'Ландшафтный макет'
+        },
+        include: {
+            model: Image
+        },
+        order: [
+            [Image, 'name', 'ASC']
+        ]
+    }).then(land => {
+        result.push(land)
+    })
+    await Project.findAll({
+        where: {
+            type: 'Макет с интерактивной подсветкой'
+        },
+        include: {
+            model: Image
+        },
+        order: [
+            [Image, 'name', 'ASC']
+        ]
+    }).then(inter => {
+        result.push(inter)
+    })
+    await Project.findAll({
+        where: {
+            type: 'Подарочный макет'
+        },
+        include: {
+            model: Image
+        },
+        order: [
+            [Image, 'name', 'ASC']
+        ]
+    }).then(gift => {
+        result.push(gift)
+    })
+    await Project.findAll({
+        where: {
+            type: 'Промышленный макет'
+        },
+        include: {
+            model: Image
+        },
+        order: [
+            [Image, 'name', 'ASC']
+        ]
+    }).then(prom => {
+        result.push(prom)
+    })
+    await Project.findAll({
+        where: {
+            type: 'Прочее'
+        },
+        include: {
+            model: Image
+        },
+        order: [
+            [Image, 'name', 'ASC']
+        ]
+    }).then(any => {
+        result.push(any)
+        let arch = result[0],
+            concept = result[1],
+            land = result[2],
+            inter = result[3],
+            gift = result[4],
+            prom = result[5],
+            anything = result[6]
         res.render('portfolio', {
             title: 'Портфолио',
-            result
+            arch, concept, land, inter, gift, prom, anything
         });
     })
 });
@@ -29,10 +122,17 @@ router.get('/add', auth, async (req, res) => {
 router.post('/add', auth, async (req, res) => {
     try {
         if (!req.body) return res.sendStatus(400);
-        const {projectName, projectDescription, projectType} = req.body
+        const {projectName, projectType, projectScale,
+            projectSize, projectTime, projectCustomer,
+            projectCustomerUrl, projectDescription} = req.body
         await Project.create({
             name: projectName,
             type: projectType,
+            scale: projectScale,
+            size: projectSize,
+            time: projectTime,
+            customer: projectCustomer,
+            customerUrl: projectCustomerUrl,
             description: projectDescription
         }).catch(err => {
             console.log(err)
@@ -56,13 +156,13 @@ router.post('/add', auth, async (req, res) => {
             console.log(err)
         })
         req.files['projectImages'].forEach(img => {
-            let filename = img.originalname.split('.')[0];
+            let filename = img.originalname.substr(0, img.originalname.lastIndexOf('.'));
             sharp(img.buffer)
                 .toFormat('webp')
                 .webp({ quality: 90 })
                 .toFile(dirname + `/${filename}.webp`)
             Image.create({
-                src: dirname + `/${filename}.webp`,
+                src: `images/portfolio/${projectName}` + `/${filename}.webp`,
                 name: filename,
                 ProjectId: projectIdImg.id
             }).catch(err => {
