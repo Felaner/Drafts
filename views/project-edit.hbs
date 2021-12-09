@@ -1,0 +1,65 @@
+<h1>Редактировать {{project.name}}</h1>
+
+<form action="/courses/edit" method="POST" class="course-form">
+    <div class="input-field">
+        <input id="title" name="title" type="text" class="validate" required value="{{project.name}}">
+        <label for="title">Название прокета</label>
+        <span class="helper-text" data-error="Введите название"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="projectName">Название проекта</label>
+        <input name="projectName" type="text" id="projectName" class="form-control" value="{{project.name}}">
+    </div>
+    <div class="form-group">
+        <label for="projectType">Тип макета</label>
+        <select name="projectType" type="text" id="projectType" class="form-control">
+            <option value="Архитектурный макет">Архитектурный макет</option>
+            <option value="Концептуальный макет">Концептуальный макет</option>
+            <option value="Ландшафтный макет">Ландшафтный макет</option>
+            <option value="Макет с интерактивной подсветкой">Макет с интерактивной подсветкой</option>
+            <option value="Подарочный макет">Подарочный макет</option>
+            <option value="Промышленный макет">Промышленный макет</option>
+            <option value="Прочее">Прочее</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="projectScale">Масштаб</label>
+        <input name="projectScale" type="text" id="projectScale" class="form-control" value="{{project.scale}}">
+    </div>
+    <div class="form-group">
+        <label for="projectSize">Размер</label>
+        <input name="projectSize" type="text" id="projectSize" class="form-control" value="{{project.size}}">
+    </div>
+    <div class="form-group">
+        <label for="projectTime">Срок изготовления</label>
+        <input name="projectTime" type="text" id="projectTime" class="form-control" value="{{project.time}}">
+    </div>
+    <div class="form-group">
+        <label for="projectCustomer">Заказчик</label>
+        <input name="projectCustomer" type="text" id="projectCustomer" class="form-control" value="{{project.customer}}">
+    </div>
+    <div class="form-group">
+        <label for="projectCustomerUrl">Ссылка на заказчика</label>
+        <input name="projectCustomerUrl" type="text" id="projectCustomerUrl" class="form-control" value="{{project.customerUrl}}">
+    </div>
+    <div class="form-group">
+        <label for="projectDescription">Описание проекта</label>
+        <textarea name="projectDescription" type="text" id="projectDescription" class="form-control">{{project.description}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="projectImages">Добавьте изображения (до 50 шт.)</label>
+        <input name="projectImages" type="file" id="projectImages" class="form-control" multiple>
+    </div>
+
+    <input type="hidden" name="id" value="{{project.id}}">
+    <input type="hidden" name="_csrf" value="{{csrf}}">
+
+    <button type="submit" class="button">Редактировать проект</button>
+</form>
+
+<form action="/portfolio/remove" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrf}}">
+    <input type="hidden" name="id" value="{{ project.id }}">
+    <button class="button">Удалить проект</button>
+</form>

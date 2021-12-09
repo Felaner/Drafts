@@ -177,4 +177,30 @@ router.post('/add', auth, async (req, res) => {
     }
 });
 
+router.get('/edit', auth, async (req, res) => {
+    try {
+        const projects = await Project.findAll();
+
+        res.render('edit', {
+            title: `Редактирование проектов`,
+            projects
+        });
+    } catch (e) {
+        console.dir(e)
+    }
+});
+
+router.get('/edit/:id', auth, async (req, res) => {
+    try {
+        const project = await Project.findByPk(req.params.id);
+
+        res.render('project-edit', {
+            title: `Редактирование ${project.name}`,
+            project
+        });
+    } catch (e) {
+        console.dir(e)
+    }
+});
+
 module.exports = router;
