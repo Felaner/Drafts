@@ -5,21 +5,19 @@ const router = Router();
 const fs = require('fs');
 const auth = require('../middleware/auth');
 const sharp = require('sharp');
-const Image = require('../models/images')
-const Project = require('../models/projects')
+const { project: Project, image: Image } = require('../models/projects')
 
 router.get('/', async (req, res) => {
-    // await Project.findAll().then(function (projects) {
-    //     Image.findAll({
-    //         where: {
-    //             project: projects.name
-    //         }
-    //     }).then(function () {
-            res.render('portfolio', {
-                title: 'Портфолио'
-            });
-    //     })
-    // })
+    await Project.findAll({
+        include: {
+            model: Image
+        }
+    }).then(result => {
+        res.render('portfolio', {
+            title: 'Портфолио',
+            result
+        });
+    })
 });
 
 router.get('/add', auth, async (req, res) => {
@@ -36,6 +34,8 @@ router.post('/add', auth, async (req, res) => {
             name: projectName,
             type: projectType,
             description: projectDescription
+        }).catch(err => {
+            console.log(err)
         });
         const dirname = `public/images/portfolio/${projectName}`;
         if (!fs.existsSync(dirname)) {
@@ -47,6 +47,14 @@ router.post('/add', auth, async (req, res) => {
         } else {
             console.log('Папка существует')
         }
+        const projectIdImg = await Project.findOne({
+            attributes: ['id'],
+            where: {
+                name: projectName
+            }
+        }).catch(err => {
+            console.log(err)
+        })
         req.files['projectImages'].forEach(img => {
             let filename = img.originalname.split('.')[0];
             sharp(img.buffer)
@@ -56,7 +64,9 @@ router.post('/add', auth, async (req, res) => {
             Image.create({
                 src: dirname + `/${filename}.webp`,
                 name: filename,
-                project: projectName
+                ProjectId: projectIdImg.id
+            }).catch(err => {
+                console.log(err)
             });
         })
         return res.status(200).render('portfolioadd', {
