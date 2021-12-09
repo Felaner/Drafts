@@ -71,11 +71,11 @@
     height: 350px;
 }
 
-#portfolioCarousel .carousel-control-next, .carousel-control-prev {
+#portfolioCarousel .carousel-control-next, #portfolioCarousel .carousel-control-prev {
     position: relative;
 }
 
-#portfolioCarousel .carousel-control-next-icon, .carousel-control-prev-icon {
+#portfolioCarousel .carousel-control-next-icon, #portfolioCarousel .carousel-control-prev-icon {
     width: 40px;
     height: 40px;
 }

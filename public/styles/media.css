@@ -1,8 +1,8 @@
 @media (max-width: 1199px) {
-    .f-44{
-        font-size: 40px;
+    .f-40{
+        font-size: 38px;
     }
-    .f-24{
+    .f-26{
         font-size: 22px;
     }
     .contacts .f-20 {
@@ -17,16 +17,22 @@
     .advantage p.underline {
         font-size: 15px;
     }
+    .navbar .nav-link{
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 991px) {
-    .f-44{
+    .navbar .nav-link{
+        font-size: 16px;
+    }
+    .f-40{
         font-size: 36px;
     }
     .f-32{
         font-size: 30px;
     }
-    .f-24{
+    .f-26{
         font-size: 20px;
     }
     .advantage-plus {
@@ -41,13 +47,13 @@
 }
 
 @media (max-width: 767px) {
-    .f-44{
+    .f-40{
         font-size: 32px;
     }
     .f-32{
-        font-size: 28px;
+        font-size: 24px;
     }
-    .f-24{
+    .f-26{
         font-size: 18px;
     }
     .small-image {
@@ -55,9 +61,6 @@
     }
     #submittedMessageBox {
         width: 50%;
-    }
-    .f-26 {
-        font-size: 20px;
     }
     .advantage-plus {
         height: auto;
@@ -71,11 +74,14 @@
 }
 
 @media (max-width: 575px) {
-    .f-44{
+    .f-40{
         font-size: 30px;
     }
     .f-38 {
-        font-size: 32px;
+        font-size: 22px;
+    }
+    .f-26{
+        font-size: 16px;
     }
     .divider {
         margin: 25px 0;
@@ -87,6 +93,13 @@
     #submittedMessageBox p {
         font-size: 14px;
     }
+    .arch-carousel{
+        max-height: 400px;
+    }
+    .arch-carousel img{
+        max-height: 400px;
+    }
+
 }
 
 @media (max-width: 398px) {
@@ -100,7 +113,7 @@
         height: 50px;
     }
 
-    .f-44 {
+    .f-40 {
         font-size: 36px;
     }
 

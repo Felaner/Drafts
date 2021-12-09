@@ -17,3 +17,11 @@
 .nav-item{
     display: inline-block;
 }
+
+.portfolio-tabs a{
+    color: #000000;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    background-color: #DE1B1B;
+}
