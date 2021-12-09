@@ -12,6 +12,9 @@
     <div class="row mb-5">
         <div class="col-lg-12 f-40 font-weight-bold text-center pb-5">Наше портфолио</div>
     </div>
+    {{#if isAuth}}
+        <a class="button ml-2" href="/portfolio/add">Добавить проект в портфолио</a>
+    {{/if}}
     <div class="row">
         <div class="col-12">
             <div id="portfolioCarousel" class="carousel slide mb-5" data-ride="carousel">

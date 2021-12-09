@@ -15,6 +15,7 @@ const sequelize = require('./utils/database')
 
 const varMiddleware = require('./middleware/variables');
 const userMiddleware = require('./middleware/user');
+const fileMiddleware = require('./middleware/file')
 
 const path = require('path');
 
@@ -79,6 +80,10 @@ app.use(session({
         maxAge: 10 * 60 * 1000
     }
 }));
+
+app.use(fileMiddleware.fields([
+    { name: 'projectImages', maxCount: 50 }
+]));
 
 app.use(userMiddleware);
 app.use(varMiddleware);
