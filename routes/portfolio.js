@@ -203,4 +203,18 @@ router.get('/edit/:id', auth, async (req, res) => {
     }
 });
 
+router.post('/edit', auth, async (req, res) => {
+    const {id} = req.body;
+
+    try {
+        delete req.body.id;
+        const project = await Project.findByPk(id);
+        Object.assign(project, req.body);
+        await project.save();
+        res.redirect('/portfolio');
+    } catch (e) {
+        console.dir(e)
+    }
+})
+
 module.exports = router;
