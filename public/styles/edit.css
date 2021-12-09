@@ -1,0 +1,8 @@
+.project-list li a{
+    color: #000000;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.project-list li a:hover{
+    color: #DE1B1B;
+}

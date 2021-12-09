@@ -1,9 +1,10 @@
 <div class="container">
-    <ul>
+    <ul class="project-list list-unstyled f-38">
         {{#each projects}}
-            <li class="list-unstyled">
+            <li>
                 <a href="/portfolio/edit/{{this.id}}">{{this.name}}</a>
             </li>
+            <div class="divider"></div>
         {{/each}}
     </ul>
 </div>
