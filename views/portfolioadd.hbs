@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row justify-content-center mb-5 mt-5">
+        <form action="/portfolio/add" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="projectName">Название проекта</label>
+                <input name="projectName" type="text" id="projectName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="projectType">Тип макета</label>
+                <select name="projectType" type="text" id="projectType" class="form-control">
+                    <option value="Архитектурный макет">Архитектурный макет</option>
+                    <option value="Концептуальный макет">Концептуальный макет</option>
+                    <option value="Ландшафтный макет">Ландшафтный макет</option>
+                    <option value="Макет с интерактивной подсветкой">Макет с интерактивной подсветкой</option>
+                    <option value="Подарочный макет">Подарочный макет</option>
+                    <option value="Промышленный макет">Промышленный макет</option>
+                    <option value="Прочее">Прочее</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="projectDescription">Описание проекта</label>
+                <textarea name="projectDescription" type="text" id="projectDescription" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="projectImages">Добавьте изображения (до 50 шт.)</label>
+                <input name="projectImages" type="file" id="projectImages" class="form-control" multiple>
+            </div>
+            <div class="form-group">
+                <button type="submit">Добавить</button>
+            </div>
+        </form>
+    </div>
+</div>
