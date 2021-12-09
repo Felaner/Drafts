@@ -20,6 +20,14 @@
     .navbar .nav-link{
         font-size: 13px;
     }
+    .portfolio .nav-pills .nav-link{
+        display: block;
+        padding: 0.5rem 0.9rem;
+    }
+    .portfolio .nav-pills{
+        font-size: 13px;
+        font-weight: bold;
+    }
 }
 
 @media (max-width: 991px) {
