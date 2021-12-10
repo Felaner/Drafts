@@ -31,4 +31,10 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.get('/policy', (req, res) => {
+    res.render('policy', {
+        title: 'Политика конфиденциальности'
+    });
+});
+
 module.exports = router;

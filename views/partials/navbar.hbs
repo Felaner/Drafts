@@ -20,6 +20,16 @@
                             <button class="button" data-toggle="modal" data-target="#callModal">Заказать звонок</button>
                         </li>
                         {{#if isAuth}}
+                            <li class="d-none d-lg-block">
+                                <a class="button ml-2" href="/admin/logout">Выйти</a>
+                            </li>
+                        {{/if}}
+                    </ul>
+                </div>
+
+                <div class="col-12 mt-3 d-lg-none d-block">
+                    <ul class="list-unstyled align-items-center d-flex justify-content-center">
+                        {{#if isAuth}}
                             <li>
                                 <a class="button ml-2" href="/admin/logout">Выйти</a>
                             </li>
