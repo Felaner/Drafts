@@ -79,9 +79,19 @@
     .advantage p.underline {
         margin-top: 10px;
     }
+    .perenos{
+        max-width: 400px;
+        word-wrap: break-word;
+    }
+    .perenos a{
+        word-wrap: break-word;
+    }
 }
 
 @media (max-width: 575px) {
+    .f-46{
+        font-size: 32px;
+    }
     .f-40{
         font-size: 30px;
     }
@@ -117,6 +127,9 @@
 }
 
 @media (max-width: 366px) {
+    .advantage-plus{
+        max-width: 290px;
+    }
     .advantage .how-build > div:nth-child(5) p.underline {
         height: 50px;
     }
