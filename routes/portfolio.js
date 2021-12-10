@@ -204,16 +204,61 @@ router.get('/edit/:id', auth, async (req, res) => {
 });
 
 router.post('/edit', auth, async (req, res) => {
-    const {id} = req.body;
+    const {id, projectEditName, projectEditType,
+        projectEditScale, projectEditSize, projectEditTime,
+        projectEditCustomer, projectEditCustomerUrl, projectEditDescription} = req.body;
 
     try {
-        delete req.body.id;
-        const project = await Project.findByPk(id);
-        Object.assign(project, req.body);
-        await project.save();
-        res.redirect('/portfolio');
+        await Project.update(
+            {
+                name: projectEditName,
+                type: projectEditType,
+                scale: projectEditScale,
+                size: projectEditSize,
+                time: projectEditTime,
+                customer: projectEditCustomer,
+                customerUrl: projectEditCustomerUrl,
+                description: projectEditDescription
+            },
+            {
+                where: {
+                    id: id
+                }
+            }
+        ).then(result => {
+            res.redirect('/portfolio');
+        }).error(e => {
+            console.log(e)
+        });
     } catch (e) {
         console.dir(e)
+    }
+})
+
+router.post('/remove', auth, async (req, res) => {
+    try {
+        const images = Image.findAll({
+            attributes: ['src'],
+            where: {
+                ProjectId: req.body.id
+            }
+        }).then(result => {
+            result.forEach(el => {
+                try {
+                    fs.rmSync('public/' + el.src, { recursive: true, force: true });
+                } catch (error) {
+                    console.error(error)
+                }
+            })
+        })
+        await Project.destroy({
+            where: {
+                id: req.body.id
+            }
+        });
+        res.redirect('/portfolio');
+    } catch(e) {
+        console.dir(e);
     }
 })
 
