@@ -34,6 +34,15 @@
     .navbar .nav-link{
         font-size: 16px;
     }
+    .navbar {
+        align-items: unset;
+    }
+    .navbar-brand img{
+        width: 100%;
+    }
+    .navbar .navbar-contacts.navbar-nav {
+        flex-direction: unset;
+    }
     .f-40{
         font-size: 36px;
     }
@@ -55,6 +64,9 @@
 }
 
 @media (max-width: 767px) {
+    .navbar-contacts {
+        font-size: 15px;
+    }
     .f-40{
         font-size: 32px;
     }
@@ -89,6 +101,9 @@
 }
 
 @media (max-width: 575px) {
+    .navbar .navbar-contacts.navbar-nav {
+        flex-direction: column;
+    }
     .f-46{
         font-size: 32px;
     }

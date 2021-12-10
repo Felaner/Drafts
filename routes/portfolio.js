@@ -170,7 +170,7 @@ router.post('/add', auth, async (req, res) => {
             });
         })
         return res.status(200).render('portfolioadd', {
-            title: 'Добавить проект'
+            title: 'Добавить проект',
         });
     } catch(e) {
         console.log(e);
