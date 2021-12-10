@@ -158,8 +158,10 @@ router.post('/add', auth, async (req, res) => {
         req.files['projectImages'].forEach(img => {
             let filename = img.originalname.substr(0, img.originalname.lastIndexOf('.'));
             sharp(img.buffer)
+                .rotate()
                 .toFormat('webp')
                 .webp({ quality: 90 })
+                .withMetadata()
                 .toFile(dirname + `/${filename}.webp`)
             Image.create({
                 src: `images/portfolio/${projectName}` + `/${filename}.webp`,
@@ -169,8 +171,10 @@ router.post('/add', auth, async (req, res) => {
                 console.log(err)
             });
         })
+        req.flash('addSuccess', "Проект успешно добавлен")
         return res.status(200).render('portfolioadd', {
             title: 'Добавить проект',
+            addSuccess: req.flash('addSuccess')
         });
     } catch(e) {
         console.log(e);
@@ -183,7 +187,9 @@ router.get('/edit', auth, async (req, res) => {
 
         res.render('edit', {
             title: `Редактирование проектов`,
-            projects
+            projects,
+            editSuccess: req.flash('editSuccess'),
+            deleteSuccess: req.flash('deleteSuccess')
         });
     } catch (e) {
         console.dir(e)
@@ -226,7 +232,8 @@ router.post('/edit', auth, async (req, res) => {
                 }
             }
         ).then(result => {
-            res.redirect('/portfolio');
+            req.flash('editSuccess', "Проект успешно изменен")
+            res.redirect('/portfolio/edit');
         }).error(e => {
             console.log(e)
         });
@@ -256,7 +263,8 @@ router.post('/remove', auth, async (req, res) => {
                 id: req.body.id
             }
         });
-        res.redirect('/portfolio');
+        req.flash('deleteSuccess', 'Проект успешно удален')
+        res.redirect('/portfolio/edit');
     } catch(e) {
         console.dir(e);
     }
