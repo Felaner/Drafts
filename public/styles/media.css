@@ -98,6 +98,12 @@
     .perenos a{
         word-wrap: break-word;
     }
+    .arch-carousel {
+        height: 500px;
+    }
+    .arch-carousel img {
+        height: 500px;
+    }
 }
 
 @media (max-width: 575px) {
@@ -127,10 +133,10 @@
         font-size: 14px;
     }
     .arch-carousel{
-        max-height: 400px;
+        max-height: 300px;
     }
     .arch-carousel img{
-        max-height: 400px;
+        max-height: 300px;
     }
 
 }
@@ -155,5 +161,10 @@
 
     .draft-video iframe{
         height: 200px;
+    }
+
+    .scrolling-img {
+        width: 80%;
+        height: auto;
     }
 }
