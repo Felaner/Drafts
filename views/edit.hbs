@@ -1,5 +1,11 @@
 <div class="container">
     <ul class="project-list list-unstyled f-38">
+        {{#if editSuccess}}
+            <div class="alert alert-success text-center">{{editSuccess}}</div>
+        {{/if}}
+        {{#if deleteSuccess}}
+            <div class="alert alert-success text-center">{{deleteSuccess}}</div>
+        {{/if}}
         {{#each projects}}
             <li>
                 <a href="/portfolio/edit/{{this.id}}">{{this.name}}</a>

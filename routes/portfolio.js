@@ -10,6 +10,16 @@ const { project: Project, image: Image } = require('../models/projects')
 router.get('/', async (req, res) => {
     const result = [];
     await Project.findAll({
+        include: {
+            model: Image
+        },
+        order: [
+            [Image, 'name', 'ASC']
+        ]
+    }).then(all => {
+        result.push(all)
+    })
+    await Project.findAll({
         where: {
             type: 'Архитектурный макет'
         },
@@ -99,16 +109,17 @@ router.get('/', async (req, res) => {
         ]
     }).then(any => {
         result.push(any)
-        let arch = result[0],
-            concept = result[1],
-            land = result[2],
-            inter = result[3],
-            gift = result[4],
-            prom = result[5],
-            anything = result[6]
+        let all = result[0],
+            arch = result[1],
+            concept = result[2],
+            land = result[3],
+            inter = result[4],
+            gift = result[5],
+            prom = result[6],
+            anything = result[7]
         res.render('portfolio', {
             title: 'Портфолио',
-            arch, concept, land, inter, gift, prom, anything
+            all, arch, concept, land, inter, gift, prom, anything
         });
     })
 });
@@ -158,8 +169,10 @@ router.post('/add', auth, async (req, res) => {
         req.files['projectImages'].forEach(img => {
             let filename = img.originalname.substr(0, img.originalname.lastIndexOf('.'));
             sharp(img.buffer)
+                .rotate()
                 .toFormat('webp')
                 .webp({ quality: 90 })
+                .withMetadata()
                 .toFile(dirname + `/${filename}.webp`)
             Image.create({
                 src: `images/portfolio/${projectName}` + `/${filename}.webp`,
@@ -169,8 +182,10 @@ router.post('/add', auth, async (req, res) => {
                 console.log(err)
             });
         })
+        req.flash('addSuccess', "Проект успешно добавлен")
         return res.status(200).render('portfolioadd', {
             title: 'Добавить проект',
+            addSuccess: req.flash('addSuccess')
         });
     } catch(e) {
         console.log(e);
@@ -183,7 +198,9 @@ router.get('/edit', auth, async (req, res) => {
 
         res.render('edit', {
             title: `Редактирование проектов`,
-            projects
+            projects,
+            editSuccess: req.flash('editSuccess'),
+            deleteSuccess: req.flash('deleteSuccess')
         });
     } catch (e) {
         console.dir(e)
@@ -226,7 +243,8 @@ router.post('/edit', auth, async (req, res) => {
                 }
             }
         ).then(result => {
-            res.redirect('/portfolio');
+            req.flash('editSuccess', "Проект успешно изменен")
+            res.redirect('/portfolio/edit');
         }).error(e => {
             console.log(e)
         });
@@ -256,7 +274,8 @@ router.post('/remove', auth, async (req, res) => {
                 id: req.body.id
             }
         });
-        res.redirect('/portfolio');
+        req.flash('deleteSuccess', 'Проект успешно удален')
+        res.redirect('/portfolio/edit');
     } catch(e) {
         console.dir(e);
     }

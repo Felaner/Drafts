@@ -17,6 +17,7 @@
 .arch-carousel img{
     height: 700px;
     width: 100%;
+    object-fit: contain;
 }
 
 #firstCarousel {
@@ -29,6 +30,8 @@
 
 .home-carousel img{
     max-height: 550px;
+    object-fit: cover;
+    object-position: 65% 85%;
 }
 
 #firstCarousel .carousel-indicators {
@@ -39,9 +42,10 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    scrollbar-width: thin;
+    scrollbar-width: none;
     scrollbar-color: #DE1B1B #ffffff;
 }
+.scrolling-wrapper::-webkit-scrollbar { width: 0; }
 
 .scrolling-wrapper img {
     margin: 0 6px;
@@ -83,4 +87,94 @@
     cursor: pointer;
     width: 150px;
     height: 100px;
+    object-fit: cover;
+}
+
+.all-image {
+    display: flex;
+    height: 300px;
+    border: 2px solid #000000;
+    transition: 0.3s;
+}
+
+.all-image:before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    right: 21px;
+    bottom: 6px;
+    left: 21px;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.all-image-text{
+    text-align: center;
+    font-size: 24px;
+    padding: 23px;
+    color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 20%;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 5;
+}
+
+.all-image-href:hover p {
+    opacity: 1;
+}
+
+.all-image:hover:before{
+    opacity: 1;
+}
+
+.all-image img{
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+}
+
+.scrolling-wrapper {
+    position: relative;
+}
+
+.scrolling-arrow-left {
+    position: absolute;
+    padding: 34px 5px 35px 10px;
+    left: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    bottom: 0;
+}
+
+.scrolling-arrow-right {
+    position: absolute;
+    padding: 34px 10px 34px 5px;
+    right: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    bottom: 0;
+}
+
+.scrolling-arrow-left:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.scrolling-arrow-right:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.scrolling-arrow-left img, .scrolling-arrow-right img{
+    width: 20px;
+}
+
+.small-image {
+    object-fit: cover;
 }

@@ -1,6 +1,9 @@
 <div class="container">
     <div class="row justify-content-center mb-5 mt-5">
         <form action="/portfolio/add" method="post" enctype="multipart/form-data">
+            {{#if addSuccess}}
+                <div class="alert alert-success text-center">{{addSuccess}}</div>
+            {{/if}}
             <div class="form-group">
                 <label for="projectName">Название проекта</label>
                 <input name="projectName" type="text" id="projectName" class="form-control">
@@ -46,7 +49,7 @@
                 <input name="projectImages" type="file" id="projectImages" class="form-control" multiple>
             </div>
             <div class="form-group">
-                <button type="submit">Добавить</button>
+                <button type="submit" class="button">Добавить</button>
             </div>
         </form>
     </div>

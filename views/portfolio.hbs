@@ -26,7 +26,10 @@
         <div class="col-12">
             <ul class="nav nav-pills mb-3 portfolio-tabs justify-content-center" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="pills-arch-tab" data-toggle="pill" href="#pills-arch" role="tab" aria-controls="pills-arch" aria-selected="true">Архитектурные</a>
+                    <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">Все проекты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-arch-tab" data-toggle="pill" href="#pills-arch" role="tab" aria-controls="pills-arch" aria-selected="false">Архитектурные</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-concept-tab" data-toggle="pill" href="#pills-concept" role="tab" aria-controls="pills-concept" aria-selected="false">Концептуальные</a>
@@ -48,37 +51,56 @@
                 </li>
             </ul>
 
-<!--            Архитектурные-->
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-arch" role="tabpanel" aria-labelledby="pills-arch-tab">
+                <!--            Все макеты-->
+                <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+                    <div class="row">
+                        {{#each all}}
+                            <div class="col-lg-4 col-md-6 col-12 mb-3">
+                                <a class="all-image-href">
+                                    <input type="hidden" value="{{this.type}}">
+                                    <div class="all-image p-1">
+                                        <img src="{{this.Images.[0].src}}" alt="{{this.Images.[0].name}}">
+                                        <p class="all-image-text">{{this.name}}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <!--            Архитектурные-->
+                <div class="tab-pane fade" id="pills-arch" role="tabpanel" aria-labelledby="pills-arch-tab">
                     <div class="row">
                         <div class="col-12">
                             <div id="archPortCarousel" class="carousel slide mb-5" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     {{#each arch}}
-                                        <li data-target="#archPortCarousel" data-slide-to="{{this.[index]}}"></li>
+                                        <li data-target="#archPortCarousel" data-slide-to="{{@index}}"></li>
                                     {{/each}}
                                 </ol>
                                 <div class="carousel-inner">
                                     {{#each arch}}
                                         <div class="carousel-item">
                                             <div class="row">
-                                                <div class="col-lg-8">
+                                                <div class="col-lg-7 position-relative">
                                                     <div class="full-img-wrapper mb-2 d-none d-sm-block">
-                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                        <img id="project{{this.id}}" src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
                                                     </div>
                                                     <div class="scrolling-wrapper">
                                                         {{#each this.Images}}
-                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}">
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" onclick="selectedImg(this, {{../this.id}})">
                                                         {{/each}}
                                                     </div>
+                                                    <div class="scrolling-arrow-left d-none d-sm-block"><img src="images/icons/left.svg" alt="left"></div>
+                                                    <div class="scrolling-arrow-right d-none d-sm-block"><img src="images/icons/right.svg" alt="right"></div>
                                                 </div>
                                                 <div class="slider-info col-lg-5 mt-md-3 mt-lg-0">
                                                     <p class="slider-title f-20 font-weight-bold text-center">{{this.name}}</p>
                                                     <p class="slider-scale"><span class="red-underline">Масштаб:</span> {{this.scale}}</p>
                                                     <p class="slider-size"><span class="red-underline">Размер:</span> {{this.size}}</p>
                                                     <p class="slider-time"><span class="red-underline">Срок изготовления:</span> {{this.time}}</p>
-                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span>                                                              <a href="{{this.customerUrl}}">{{this.customer}}</a></p>
+                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span> {{#if this.customerUrl}}<a href="{{this.customerUrl}}">{{this.customer}}</a>{{else}}{{this.customer}}{{/if}}</p>
                                                     <p class="slider-description"><span class="red-underline">Описание:</span> {{this.description}}</p>
                                                 </div>
                                             </div>
@@ -114,22 +136,24 @@
                                     {{#each concept}}
                                         <div class="carousel-item">
                                             <div class="row">
-                                                <div class="col-lg-7">
+                                                <div class="col-lg-7 position-relative">
                                                     <div class="full-img-wrapper mb-2 d-none d-sm-block">
-                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                        <img id="project{{this.id}}" src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
                                                     </div>
                                                     <div class="scrolling-wrapper">
                                                         {{#each this.Images}}
-                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}">
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" onclick="selectedImg(this, {{../this.id}})">
                                                         {{/each}}
                                                     </div>
+                                                    <div class="scrolling-arrow-left d-none d-sm-block"><img src="images/icons/left.svg" alt="left"></div>
+                                                    <div class="scrolling-arrow-right d-none d-sm-block"><img src="images/icons/right.svg" alt="right"></div>
                                                 </div>
                                                 <div class="slider-info col-lg-5 mt-md-3 mt-lg-0">
                                                         <p class="slider-title f-20 font-weight-bold text-center">{{this.name}}</p>
                                                         <p class="slider-scale"><span class="red-underline">Масштаб:</span> {{this.scale}}</p>
                                                         <p class="slider-size"><span class="red-underline">Размер:</span> {{this.size}}</p>
                                                         <p class="slider-time"><span class="red-underline">Срок изготовления:</span> {{this.time}}</p>
-                                                        <p class="slider-customer"><span class="red-underline">Заказчик:</span>                                                              <a href="{{this.customerUrl}}">{{this.customer}}</a></p>
+                                                        <p class="slider-customer"><span class="red-underline">Заказчик:</span> {{#if this.customerUrl}}<a href="{{this.customerUrl}}">{{this.customer}}</a>{{else}}{{this.customer}}{{/if}}</p>
                                                         <p class="slider-description"><span class="red-underline">Описание:</span> {{this.description}}</p>
                                                     </div>
                                             </div>
@@ -165,22 +189,24 @@
                                     {{#each land}}
                                         <div class="carousel-item">
                                             <div class="row">
-                                                <div class="col-lg-8">
+                                                <div class="col-lg-7 position-relative">
                                                     <div class="full-img-wrapper mb-2 d-none d-sm-block">
-                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                        <img id="project{{this.id}}" src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
                                                     </div>
                                                     <div class="scrolling-wrapper">
                                                         {{#each this.Images}}
-                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}">
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" onclick="selectedImg(this, {{../this.id}})">
                                                         {{/each}}
                                                     </div>
+                                                    <div class="scrolling-arrow-left d-none d-sm-block"><img src="images/icons/left.svg" alt="left"></div>
+                                                    <div class="scrolling-arrow-right d-none d-sm-block"><img src="images/icons/right.svg" alt="right"></div>
                                                 </div>
                                                 <div class="slider-info col-lg-5 mt-md-3 mt-lg-0">
                                                     <p class="slider-title f-20 font-weight-bold text-center">{{this.name}}</p>
                                                     <p class="slider-scale"><span class="red-underline">Масштаб:</span> {{this.scale}}</p>
                                                     <p class="slider-size"><span class="red-underline">Размер:</span> {{this.size}}</p>
                                                     <p class="slider-time"><span class="red-underline">Срок изготовления:</span> {{this.time}}</p>
-                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span>                                                              <a href="{{this.customerUrl}}">{{this.customer}}</a></p>
+                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span> {{#if this.customerUrl}}<a href="{{this.customerUrl}}">{{this.customer}}</a>{{else}}{{this.customer}}{{/if}}</p>
                                                     <p class="slider-description"><span class="red-underline">Описание:</span> {{this.description}}</p>
                                                 </div>
                                             </div>
@@ -216,22 +242,24 @@
                                     {{#each inter}}
                                         <div class="carousel-item">
                                             <div class="row">
-                                                <div class="col-lg-8">
+                                                <div class="col-lg-7 position-relative">
                                                     <div class="full-img-wrapper mb-2 d-none d-sm-block">
-                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                        <img id="project{{this.id}}" src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
                                                     </div>
                                                     <div class="scrolling-wrapper">
                                                         {{#each this.Images}}
-                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}">
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" onclick="selectedImg(this, {{../this.id}})">
                                                         {{/each}}
                                                     </div>
+                                                    <div class="scrolling-arrow-left d-none d-sm-block"><img src="images/icons/left.svg" alt="left"></div>
+                                                    <div class="scrolling-arrow-right d-none d-sm-block"><img src="images/icons/right.svg" alt="right"></div>
                                                 </div>
                                                 <div class="slider-info col-lg-5 mt-md-3 mt-lg-0">
                                                     <p class="slider-title f-20 font-weight-bold text-center">{{this.name}}</p>
                                                     <p class="slider-scale"><span class="red-underline">Масштаб:</span> {{this.scale}}</p>
                                                     <p class="slider-size"><span class="red-underline">Размер:</span> {{this.size}}</p>
                                                     <p class="slider-time"><span class="red-underline">Срок изготовления:</span> {{this.time}}</p>
-                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span>                                                              <a href="{{this.customerUrl}}">{{this.customer}}</a></p>
+                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span> {{#if this.customerUrl}}<a href="{{this.customerUrl}}">{{this.customer}}</a>{{else}}{{this.customer}}{{/if}}</p>
                                                     <p class="slider-description"><span class="red-underline">Описание:</span> {{this.description}}</p>
                                                 </div>
                                             </div>
@@ -267,22 +295,24 @@
                                     {{#each gift}}
                                         <div class="carousel-item">
                                             <div class="row">
-                                                <div class="col-lg-8">
+                                                <div class="col-lg-7 position-relative">
                                                     <div class="full-img-wrapper mb-2 d-none d-sm-block">
-                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                        <img id="project{{this.id}}" src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
                                                     </div>
                                                     <div class="scrolling-wrapper">
                                                         {{#each this.Images}}
-                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}">
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" onclick="selectedImg(this, {{../this.id}})">
                                                         {{/each}}
                                                     </div>
+                                                    <div class="scrolling-arrow-left d-none d-sm-block"><img src="images/icons/left.svg" alt="left"></div>
+                                                    <div class="scrolling-arrow-right d-none d-sm-block"><img src="images/icons/right.svg" alt="right"></div>
                                                 </div>
                                                 <div class="slider-info col-lg-5 mt-md-3 mt-lg-0">
                                                     <p class="slider-title f-20 font-weight-bold text-center">{{this.name}}</p>
                                                     <p class="slider-scale"><span class="red-underline">Масштаб:</span> {{this.scale}}</p>
                                                     <p class="slider-size"><span class="red-underline">Размер:</span> {{this.size}}</p>
                                                     <p class="slider-time"><span class="red-underline">Срок изготовления:</span> {{this.time}}</p>
-                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span>                                                              <a href="{{this.customerUrl}}">{{this.customer}}</a></p>
+                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span> {{#if this.customerUrl}}<a href="{{this.customerUrl}}">{{this.customer}}</a>{{else}}{{this.customer}}{{/if}}</p>
                                                     <p class="slider-description"><span class="red-underline">Описание:</span> {{this.description}}</p>
                                                 </div>
                                             </div>
@@ -318,22 +348,24 @@
                                     {{#each prom}}
                                         <div class="carousel-item">
                                             <div class="row">
-                                                <div class="col-lg-8">
+                                                <div class="col-lg-7 position-relative">
                                                     <div class="full-img-wrapper mb-2 d-none d-sm-block">
-                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                        <img id="project{{this.id}}" src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
                                                     </div>
                                                     <div class="scrolling-wrapper">
                                                         {{#each this.Images}}
-                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}">
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" onclick="selectedImg(this, {{../this.id}})">
                                                         {{/each}}
                                                     </div>
+                                                    <div class="scrolling-arrow-left d-none d-sm-block"><img src="images/icons/left.svg" alt="left"></div>
+                                                    <div class="scrolling-arrow-right d-none d-sm-block"><img src="images/icons/right.svg" alt="right"></div>
                                                 </div>
                                                 <div class="slider-info col-lg-5 mt-md-3 mt-lg-0">
                                                     <p class="slider-title f-20 font-weight-bold text-center">{{this.name}}</p>
                                                     <p class="slider-scale"><span class="red-underline">Масштаб:</span> {{this.scale}}</p>
                                                     <p class="slider-size"><span class="red-underline">Размер:</span> {{this.size}}</p>
                                                     <p class="slider-time"><span class="red-underline">Срок изготовления:</span> {{this.time}}</p>
-                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span>                                                              <a href="{{this.customerUrl}}">{{this.customer}}</a></p>
+                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span> {{#if this.customerUrl}}<a href="{{this.customerUrl}}">{{this.customer}}</a>{{else}}{{this.customer}}{{/if}}</p>
                                                     <p class="slider-description"><span class="red-underline">Описание:</span> {{this.description}}</p>
                                                 </div>
                                             </div>
@@ -368,22 +400,24 @@
                                     {{#each anything}}
                                         <div class="carousel-item">
                                             <div class="row">
-                                                <div class="col-lg-8">
+                                                <div class="col-lg-7 position-relative">
                                                     <div class="full-img-wrapper mb-2 d-none d-sm-block">
-                                                        <img src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
+                                                        <img id="project{{this.id}}" src="{{this.Images.[0].src}}" alt="" class="full-img small-image" width="100%" height="100%">
                                                     </div>
                                                     <div class="scrolling-wrapper">
                                                         {{#each this.Images}}
-                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}">
+                                                            <img loading="lazy" src="{{src}}" class="scrolling-img" alt="{{name}}" onclick="selectedImg(this, {{../this.id}})">
                                                         {{/each}}
                                                     </div>
+                                                    <div class="scrolling-arrow-left d-none d-sm-block"><img src="images/icons/left.svg" alt="left"></div>
+                                                    <div class="scrolling-arrow-right d-none d-sm-block"><img src="images/icons/right.svg" alt="right"></div>
                                                 </div>
                                                 <div class="slider-info col-lg-5 mt-md-3 mt-lg-0">
                                                     <p class="slider-title f-20 font-weight-bold text-center">{{this.name}}</p>
                                                     <p class="slider-scale"><span class="red-underline">Масштаб:</span> {{this.scale}}</p>
                                                     <p class="slider-size"><span class="red-underline">Размер:</span> {{this.size}}</p>
                                                     <p class="slider-time"><span class="red-underline">Срок изготовления:</span> {{this.time}}</p>
-                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span>                                                              <a href="{{this.customerUrl}}">{{this.customer}}</a></p>
+                                                    <p class="slider-customer"><span class="red-underline">Заказчик:</span> {{#if this.customerUrl}}<a href="{{this.customerUrl}}">{{this.customer}}</a>{{else}}{{this.customer}}{{/if}}</p>
                                                     <p class="slider-description"><span class="red-underline">Описание:</span> {{this.description}}</p>
                                                 </div>
                                             </div>
