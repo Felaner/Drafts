@@ -20,7 +20,55 @@ $(function (){
     }
 })
 
+function selectedImg(el, index) {
+    const img = $('img' + '[alt="' + el.alt + '"]')
+    img.parent().parent().parent().parent().parent().parent()
+        .find('#project' + index)[0].src = img.attr('src')
+}
+
+$(function() {
+    $('.scrolling-arrow-left').click(function () {
+        $('.scrolling-wrapper').animate({
+            scrollLeft: '-=480'
+        });
+    })
+
+    $('.scrolling-arrow-right').click(function () {
+        $('.scrolling-wrapper').animate({
+            scrollLeft: '+=480'
+        });
+    })
+});
+
 $(function () {
+    $('.all-image-href').click(function () {
+        const type = $(this).find('input').val()
+        $('.nav-pills .nav-link').removeClass('active').attr('aria-selected', 'false')
+        $('.tab-content .tab-pane').removeClass('show').removeClass('active')
+        if (type === "Архитектурный макет") {
+            $('#pills-arch-tab').addClass('active').attr('aria-selected', 'true')
+            $('#pills-arch').addClass('show').addClass('active')
+        } else if (type === "Концептуальный макет") {
+            $('#pills-concept-tab').addClass('active').attr('aria-selected', 'true')
+            $('#pills-concept').addClass('show').addClass('active')
+        } else if (type === "Ландшафтный макет") {
+            $('#pills-land-tab').addClass('active').attr('aria-selected', 'true')
+            $('#pills-land').addClass('show').addClass('active')
+        } else if (type === "Макет с интерактивной подсветкой") {
+            $('#pills-inter-tab').addClass('active').attr('aria-selected', 'true')
+            $('#pills-inter').addClass('show').addClass('active')
+        } else if (type === "Подарочный макет") {
+            $('#pills-gift-tab').addClass('active').attr('aria-selected', 'true')
+            $('#pills-gift').addClass('show').addClass('active')
+        } else if (type === "Промышленный макет") {
+            $('#pills-prom-tab').addClass('active').attr('aria-selected', 'true')
+            $('#pills-prom').addClass('show').addClass('active')
+        } else if (type === "Прочее") {
+            $('#pills-anything-tab').addClass('active').attr('aria-selected', 'true')
+            $('#pills-anything').addClass('show').addClass('active')
+        }
+    })
+
     $('#archPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
     $('#conceptPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
     $('#landPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')
@@ -35,9 +83,6 @@ $(function () {
     $('#giftPortCarousel .carousel-item').slice(0, 1).addClass('active')
     $('#promPortCarousel .carousel-item').slice(0, 1).addClass('active')
     $('#anyPortCarousel .carousel-item').slice(0, 1).addClass('active')
-    $('.scrolling-img').click(function () {
-        $('.full-img').attr('src', $(this).attr('src'))
-    });
 })
 
 $(function (){

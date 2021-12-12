@@ -29,3 +29,7 @@
 .red-underline {
     border-bottom: 1px solid #DE1B1B;
 }
+
+#pills-tab .nav-link {
+    padding: .5rem 0.7rem;
+}

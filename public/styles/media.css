@@ -1,4 +1,12 @@
 @media (max-width: 1199px) {
+    #pills-tab .nav-link {
+        padding: .5rem 1rem;
+    }
+
+    .all-image {
+        height: 260px;
+    }
+
     .f-40{
         font-size: 38px;
     }
@@ -31,6 +39,10 @@
 }
 
 @media (max-width: 991px) {
+    .all-image {
+        height: 280px;
+    }
+
     .navbar .nav-link{
         font-size: 16px;
     }
@@ -64,6 +76,16 @@
 }
 
 @media (max-width: 767px) {
+    .all-image-text {
+        top: unset;
+        bottom: 100px;
+        opacity: 1;
+    }
+
+    .all-image:before {
+        opacity: 1;
+    }
+
     .navbar-contacts {
         font-size: 15px;
     }
@@ -107,6 +129,9 @@
 }
 
 @media (max-width: 575px) {
+    .all-image-text {
+        font-size: 20px;
+    }
     .navbar .navbar-contacts.navbar-nav {
         flex-direction: column;
     }
@@ -139,6 +164,11 @@
         max-height: 300px;
     }
 
+    .scrolling-img {
+        cursor: pointer;
+        width: 210px;
+        height: 180px;
+    }
 }
 
 @media (max-width: 398px) {

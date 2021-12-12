@@ -10,6 +10,16 @@ const { project: Project, image: Image } = require('../models/projects')
 router.get('/', async (req, res) => {
     const result = [];
     await Project.findAll({
+        include: {
+            model: Image
+        },
+        order: [
+            [Image, 'name', 'ASC']
+        ]
+    }).then(all => {
+        result.push(all)
+    })
+    await Project.findAll({
         where: {
             type: 'Архитектурный макет'
         },
@@ -99,16 +109,17 @@ router.get('/', async (req, res) => {
         ]
     }).then(any => {
         result.push(any)
-        let arch = result[0],
-            concept = result[1],
-            land = result[2],
-            inter = result[3],
-            gift = result[4],
-            prom = result[5],
-            anything = result[6]
+        let all = result[0],
+            arch = result[1],
+            concept = result[2],
+            land = result[3],
+            inter = result[4],
+            gift = result[5],
+            prom = result[6],
+            anything = result[7]
         res.render('portfolio', {
             title: 'Портфолио',
-            arch, concept, land, inter, gift, prom, anything
+            all, arch, concept, land, inter, gift, prom, anything
         });
     })
 });
