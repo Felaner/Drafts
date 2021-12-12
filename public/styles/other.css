@@ -41,7 +41,7 @@ a.button:hover {
     bottom: 0;
     right: 0;
     width: auto;
-    max-height: 600px;
+    height: auto;
 }
 
 
@@ -51,7 +51,8 @@ a.button:hover {
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    max-height: 90%;
+    max-height: 75%;
+    max-width: 75%;
     width: auto;
 }
 
