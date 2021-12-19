@@ -129,6 +129,10 @@
 }
 
 @media (max-width: 575px) {
+    #submittedMessageBox, #callSubmittedMessageBox {
+        width: 60%;
+        height: 40%;
+    }
     .all-image-text {
         font-size: 20px;
     }

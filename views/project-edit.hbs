@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="text-center f-38 mb-3">Редактировать проект "{{project.name}}"</h1>
 
-    <form action="/portfolio/edit" method="POST" class="course-form">
+    <form action="/portfolio/edit" method="POST" class="course-form" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="projectEditName">Название проекта</label>
@@ -9,6 +9,7 @@
         </div>
         <div class="form-group">
             <label for="projectEditType">Тип макета</label>
+            <input class="hidden-type" type="hidden" value="{{project.type}}">
             <select name="projectEditType" type="text" id="projectEditType" class="form-control">
                 <option value="Архитектурный макет">Архитектурный макет</option>
                 <option value="Концептуальный макет">Концептуальный макет</option>
@@ -42,6 +43,10 @@
         <div class="form-group">
             <label for="projectEditDescription">Описание проекта</label>
             <textarea name="projectEditDescription" type="text" id="projectEditDescription" class="form-control" rows="10">{{project.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="projectImagesEdit">Добавьте изображения (до 5 шт)</label>
+            <input name="projectImagesEdit" type="file" id="projectImagesEdit" class="form-control" multiple>
         </div>
 
         <input type="hidden" name="id" value="{{project.id}}">

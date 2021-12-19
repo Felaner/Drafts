@@ -4,6 +4,7 @@ const {Router} = require('express');
 const router = Router();
 const fs = require('fs');
 const mailer = require('../mailer/mail');
+const { EMAIL_USER } = require('../keys/index');
 
 router.get('/', (req, res) => {
     res.render('advantage', {
@@ -17,7 +18,7 @@ router.post('/', async (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const {name, contacts, object, scale, size, detailing, backlight, glass, stand, shipping, delivery, areaMessage} = req.body;
         const message = {
-            to: "kirill.deykun1@gmail.com",
+            to: 'axon15@yandex.ru',
             html: `<ul>` +
                 `<li>ФИО: ${name}</li>` +
                 `<li>Контакты: ${contacts}</li>` +

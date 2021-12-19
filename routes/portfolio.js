@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
             model: Image
         },
         order: [
-            [Image, 'name', 'ASC']
+            [Image, 'id', 'ASC']
         ]
     }).then(all => {
         result.push(all)
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
             model: Image
         },
         order: [
-            [Image, 'name', 'ASC']
+            [Image, 'id', 'ASC']
         ]
     }).then(arch => {
         result.push(arch)
@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
             model: Image
         },
         order: [
-            [Image, 'name', 'ASC']
+            [Image, 'id', 'ASC']
         ]
     }).then(land => {
         result.push(land)
@@ -66,7 +66,7 @@ router.get('/', async (req, res) => {
             model: Image
         },
         order: [
-            [Image, 'name', 'ASC']
+            [Image, 'id', 'ASC']
         ]
     }).then(inter => {
         result.push(inter)
@@ -79,7 +79,7 @@ router.get('/', async (req, res) => {
             model: Image
         },
         order: [
-            [Image, 'name', 'ASC']
+            [Image, 'id', 'ASC']
         ]
     }).then(gift => {
         result.push(gift)
@@ -92,7 +92,7 @@ router.get('/', async (req, res) => {
             model: Image
         },
         order: [
-            [Image, 'name', 'ASC']
+            [Image, 'id', 'ASC']
         ]
     }).then(prom => {
         result.push(prom)
@@ -105,7 +105,7 @@ router.get('/', async (req, res) => {
             model: Image
         },
         order: [
-            [Image, 'name', 'ASC']
+            [Image, 'id', 'ASC']
         ]
     }).then(any => {
         result.push(any)
@@ -132,61 +132,69 @@ router.get('/add', auth, async (req, res) => {
 
 router.post('/add', auth, async (req, res) => {
     try {
-        if (!req.body) return res.sendStatus(400);
-        const {projectName, projectType, projectScale,
-            projectSize, projectTime, projectCustomer,
-            projectCustomerUrl, projectDescription} = req.body
-        await Project.create({
-            name: projectName,
-            type: projectType,
-            scale: projectScale,
-            size: projectSize,
-            time: projectTime,
-            customer: projectCustomer,
-            customerUrl: projectCustomerUrl,
-            description: projectDescription
-        }).catch(err => {
-            console.log(err)
-        });
-        const dirname = `public/images/portfolio/${projectName}`;
-        if (!fs.existsSync(dirname)) {
-            try {
-                fs.mkdirSync(dirname, { recursive: true })
-            } catch (error) {
-                console.error(error)
-            }
-        } else {
-            console.log('Папка существует')
-        }
-        const projectIdImg = await Project.findOne({
-            attributes: ['id'],
-            where: {
-                name: projectName
-            }
-        }).catch(err => {
-            console.log(err)
-        })
-        req.files['projectImages'].forEach(img => {
-            let filename = img.originalname.substr(0, img.originalname.lastIndexOf('.'));
-            sharp(img.buffer)
-                .rotate()
-                .toFormat('webp')
-                .webp({ quality: 90 })
-                .withMetadata()
-                .toFile(dirname + `/${filename}.webp`)
-            Image.create({
-                src: `images/portfolio/${projectName}` + `/${filename}.webp`,
-                name: filename,
-                ProjectId: projectIdImg.id
+        if (!(req.files['projectImages'].length > 5)) {
+            if (!req.body) return res.sendStatus(400);
+            const {projectName, projectType, projectScale,
+                projectSize, projectTime, projectCustomer,
+                projectCustomerUrl, projectDescription} = req.body
+            await Project.create({
+                name: projectName,
+                type: projectType,
+                scale: projectScale,
+                size: projectSize,
+                time: projectTime,
+                customer: projectCustomer,
+                customerUrl: projectCustomerUrl,
+                description: projectDescription
             }).catch(err => {
                 console.log(err)
             });
-        })
-        req.flash('addSuccess', "Проект успешно добавлен")
-        return res.status(200).render('portfolioadd', {
-            title: 'Добавить проект',
-            addSuccess: req.flash('addSuccess')
-        });
+            const projectIdImg = await Project.findOne({
+                attributes: ['id'],
+                where: {
+                    name: projectName
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+            const dirname = `public/images/portfolio/${projectIdImg.id} project`;
+            if (!fs.existsSync(dirname)) {
+                try {
+                    fs.mkdirSync(dirname, { recursive: true })
+                } catch (error) {
+                    console.error(error)
+                }
+            } else {
+                console.log('Папка существует')
+            }
+            await req.files['projectImages'].forEach(img => {
+                let filename = img.originalname.substr(0, img.originalname.lastIndexOf('.')).substr(0, 40);
+                sharp(img.buffer)
+                    .rotate()
+                    .toFormat('webp')
+                    .webp({ quality: 90 })
+                    .withMetadata()
+                    .toFile(dirname + `/${filename}.webp`)
+                Image.create({
+                    src: `images/portfolio/${projectIdImg.id} project/${filename}.webp`,
+                    name: filename,
+                    ProjectId: projectIdImg.id
+                }).catch(err => {
+                    console.log(err)
+                });
+            })
+            req.flash('addSuccess', "Проект успешно добавлен")
+            return res.status(200).render('portfolioadd', {
+                title: 'Добавить проект',
+                addSuccess: req.flash('addSuccess')
+            });
+        } else {
+            req.flash('maxFiles', "Загружайте не более 5 файлов за раз")
+            return res.status(200).render('portfolioadd', {
+                title: 'Добавить проект',
+                maxFiles: req.flash('maxFiles')
+            });
+        }
     } catch(e) {
         console.log(e);
     }
@@ -226,6 +234,36 @@ router.post('/edit', auth, async (req, res) => {
         projectEditCustomer, projectEditCustomerUrl, projectEditDescription} = req.body;
 
     try {
+        if (req.files['projectImagesEdit']) {
+            if (req.files['projectImagesEdit'].length > 5) {
+                const projects = await Project.findAll();
+                req.flash('maxFiles', "Загружайте не более 5 файлов за раз")
+                return res.status(200).render('edit', {
+                    title: 'Редактирование проектов',
+                    projects,
+                    maxFiles: req.flash('maxFiles')
+                });
+            } else {
+                const dirname = `public/images/portfolio/${id} project`;
+                await req.files['projectImagesEdit'].forEach(img => {
+                    let filename = img.originalname.substr(0, img.originalname.lastIndexOf('.')).substr(0, 40);
+                    sharp(img.buffer)
+                        .rotate()
+                        .toFormat('webp')
+                        .webp({quality: 90})
+                        .withMetadata()
+                        .toFile(dirname + `/${filename}.webp`)
+                    Image.create({
+                        src: dirname + `/{filename}.webp`,
+                        name: filename,
+                        ProjectId: id
+                    }).catch(err => {
+                        console.log(err)
+                        throw err;
+                    });
+                })
+            }
+        }
         await Project.update(
             {
                 name: projectEditName,
@@ -245,9 +283,7 @@ router.post('/edit', auth, async (req, res) => {
         ).then(result => {
             req.flash('editSuccess', "Проект успешно изменен")
             res.redirect('/portfolio/edit');
-        }).error(e => {
-            console.log(e)
-        });
+        })
     } catch (e) {
         console.dir(e)
     }

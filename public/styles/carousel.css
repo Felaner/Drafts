@@ -45,7 +45,9 @@
     scrollbar-width: none;
     scrollbar-color: #DE1B1B #ffffff;
 }
-.scrolling-wrapper::-webkit-scrollbar { width: 0; }
+.scrolling-wrapper::-webkit-scrollbar {
+    display: none
+}
 
 .scrolling-wrapper img {
     margin: 0 6px;
@@ -131,6 +133,10 @@
     opacity: 1;
 }
 
+.all-image-href {
+    cursor: pointer;
+}
+
 .all-image:hover:before{
     opacity: 1;
 }
@@ -148,7 +154,7 @@
 .scrolling-arrow-left {
     position: absolute;
     padding: 34px 5px 35px 10px;
-    left: 16px;
+    left: 0;
     cursor: pointer;
     transition: 0.3s;
     bottom: 0;
@@ -157,7 +163,7 @@
 .scrolling-arrow-right {
     position: absolute;
     padding: 34px 10px 34px 5px;
-    right: 15px;
+    right: 0;
     cursor: pointer;
     transition: 0.3s;
     bottom: 0;

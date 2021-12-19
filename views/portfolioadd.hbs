@@ -1,6 +1,9 @@
 <div class="container">
     <div class="row justify-content-center mb-5 mt-5">
         <form action="/portfolio/add" method="post" enctype="multipart/form-data">
+            {{#if maxFiles}}
+                <div class="alert alert-danger text-center">{{maxFiles}}</div>
+            {{/if}}
             {{#if addSuccess}}
                 <div class="alert alert-success text-center">{{addSuccess}}</div>
             {{/if}}
@@ -45,8 +48,9 @@
                 <textarea name="projectDescription" type="text" id="projectDescription" class="form-control"></textarea>
             </div>
             <div class="form-group">
-                <label for="projectImages">Добавьте изображения (до 50 шт.)</label>
+                <label for="projectImages">Добавьте изображения (до 5 шт)</label>
                 <input name="projectImages" type="file" id="projectImages" class="form-control" multiple>
+                <label for="projectImages">Остальные добавьте в редактировании проекта</label>
             </div>
             <div class="form-group">
                 <button type="submit" class="button">Добавить</button>

@@ -83,7 +83,8 @@ app.use(session({
 }));
 
 app.use(fileMiddleware.fields([
-    { name: 'projectImages', maxCount: 50 }
+    { name: 'projectImages', maxCount: 15 },
+    { name: 'projectImagesEdit', maxCount: 15 }
 ]));
 
 app.use(userMiddleware);

@@ -1,5 +1,5 @@
 $(function (){
-    if ( $(window).width() > 767 ) {
+    if ( $(window).width() > 575 ) {
         $(".small-image").click(function(){
             let img = $(this);
             let src = img.attr('src');
@@ -17,7 +17,74 @@ $(function (){
                 }, 200);
             });
         });
+    } else {
+        $(".scrolling-img").click(function(){
+            let img = $(this);
+            let src = img.attr('src');
+            $("body").append(
+                "<div class='popup'>"+
+                "<div class='popup_bg'></div>"+
+                "<img src='"+src+"' class='popup_img' />"+
+                "</div>"
+            );
+            $(".popup").fadeIn(200);
+            $(".popup").click(function(){
+                $(".popup").fadeOut(200);
+                setTimeout(function() {
+                    $(".popup").remove();
+                }, 200);
+            })
+        })
     }
+})
+
+$(function () {
+    $("#conceptPortCarousel").carousel({
+        pause: true,
+        interval: false
+    });
+    $("#landPortCarousel").carousel({
+        pause: true,
+        interval: false
+    });
+    $("#interPortCarousel").carousel({
+        pause: true,
+        interval: false
+    });
+    $("#giftPortCarousel").carousel({
+        pause: true,
+        interval: false
+    });
+    $("#promPortCarousel").carousel({
+        pause: true,
+        interval: false
+    });
+    $("#anyPortCarousel").carousel({
+        pause: true,
+        interval: false
+    });
+})
+
+$(function () {
+    let numberOption;
+    const inputType = $('.hidden-type').val();
+    if (inputType === "Архитектурный макет") {
+        numberOption = 0
+    } else if (inputType === "Концептуальный макет") {
+        numberOption = 1
+    } else if (inputType === "Ландшафтный макет") {
+        numberOption = 2
+    } else if (inputType === "Макет с интерактивной подсветкой") {
+        numberOption = 3
+    } else if (inputType === "Подарочный макет") {
+        numberOption = 4
+    } else if (inputType === "Промышленный макет") {
+        numberOption = 5
+    } else if (inputType === "Прочее") {
+        numberOption = 6
+    }
+    $('#projectEditType option')[numberOption].selected = true
+    return false
 })
 
 function selectedImg(el, index) {
@@ -42,31 +109,76 @@ $(function() {
 
 $(function () {
     $('.all-image-href').click(function () {
-        const type = $(this).find('input').val()
+        const type = $(this).find('.hidden-type').val()
+        const id = $(this).find('.hidden-id').val()
         $('.nav-pills .nav-link').removeClass('active').attr('aria-selected', 'false')
         $('.tab-content .tab-pane').removeClass('show').removeClass('active')
         if (type === "Архитектурный макет") {
             $('#pills-arch-tab').addClass('active').attr('aria-selected', 'true')
             $('#pills-arch').addClass('show').addClass('active')
+            const archItems = $('#archPortCarousel .carousel-item .hidden-id')
+            archItems.each(e => {
+                if (archItems[e].value === id) {
+                    $('#archPortCarousel').carousel(parseInt(e))
+                }
+            })
         } else if (type === "Концептуальный макет") {
             $('#pills-concept-tab').addClass('active').attr('aria-selected', 'true')
             $('#pills-concept').addClass('show').addClass('active')
+            const conceptItems = $('#conceptPortCarousel .carousel-item .hidden-id')
+            conceptItems.each(e => {
+                if (conceptItems[e].value === id) {
+                    $('#conceptPortCarousel').carousel(parseInt(e))
+                }
+            })
         } else if (type === "Ландшафтный макет") {
             $('#pills-land-tab').addClass('active').attr('aria-selected', 'true')
             $('#pills-land').addClass('show').addClass('active')
+            const landItems = $('#landPortCarousel .carousel-item .hidden-id')
+            landItems.each(e => {
+                if (landItems[e].value === id) {
+                    $('#landPortCarousel').carousel(parseInt(e))
+                }
+            })
         } else if (type === "Макет с интерактивной подсветкой") {
             $('#pills-inter-tab').addClass('active').attr('aria-selected', 'true')
             $('#pills-inter').addClass('show').addClass('active')
+            const interItems = $('#interPortCarousel .carousel-item .hidden-id')
+            interItems.each(e => {
+                if (interItems[e].value === id) {
+                    $('#interPortCarousel').carousel(parseInt(e))
+                }
+            })
         } else if (type === "Подарочный макет") {
             $('#pills-gift-tab').addClass('active').attr('aria-selected', 'true')
             $('#pills-gift').addClass('show').addClass('active')
+            const giftItems = $('#giftPortCarousel .carousel-item .hidden-id')
+            giftItems.each(e => {
+                if (giftItems[e].value === id) {
+                    $('#giftPortCarousel').carousel(parseInt(e))
+                }
+            })
         } else if (type === "Промышленный макет") {
             $('#pills-prom-tab').addClass('active').attr('aria-selected', 'true')
             $('#pills-prom').addClass('show').addClass('active')
+            const promItems = $('#promPortCarousel .carousel-item .hidden-id')
+            promItems.each(e => {
+                if (promItems[e].value === id) {
+                    $('#promPortCarousel').carousel(parseInt(e))
+                }
+            })
         } else if (type === "Прочее") {
             $('#pills-anything-tab').addClass('active').attr('aria-selected', 'true')
             $('#pills-anything').addClass('show').addClass('active')
+            const anythingItems = $('#anyPortCarousel .carousel-item .hidden-id')
+            anythingItems.each(e => {
+                if (anythingItems[e].value === id) {
+                    $('#anyPortCarousel').carousel(parseInt(e))
+                }
+            })
         }
+        $('html,body').stop().animate({ scrollTop: $('#scroll-point').offset().top }, 600);
+        e.preventDefault();
     })
 
     $('#archPortCarousel .carousel-indicators li').slice(0, 1).addClass('active')

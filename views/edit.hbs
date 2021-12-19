@@ -1,5 +1,8 @@
 <div class="container">
     <ul class="project-list list-unstyled f-38">
+        {{#if maxFiles}}
+            <div class="alert alert-danger text-center">{{maxFiles}}</div>
+        {{/if}}
         {{#if editSuccess}}
             <div class="alert alert-success text-center">{{editSuccess}}</div>
         {{/if}}

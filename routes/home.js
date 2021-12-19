@@ -3,6 +3,8 @@
 const {Router} = require('express');
 const router = Router();
 const mailer = require('../mailer/mail');
+const { EMAIL_USER } = require('../keys/index');
+const request = require('request')
 
 router.get('/', (req, res) => {
     res.render('home', {
@@ -16,7 +18,7 @@ router.post('/', async (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const {name, phone, areaMessage} = req.body;
         const message = {
-            to: "kirill.deykun1@gmail.com",
+            to: 'axon15@yandex.ru',
             html: `<ul>` +
                 `<li>Имя: ${name}</li>` +
                 `<li>Телефон: ${phone}</li>` +
@@ -24,7 +26,6 @@ router.post('/', async (req, res) => {
                 `</ul>`
         }
         mailer(message)
-        console.log("Post send")
         return res.sendStatus(200);
     } catch(e) {
         console.log(e);

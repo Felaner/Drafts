@@ -3,13 +3,13 @@ const { EMAIL_USER, EMAIL_PASS, EMAIL_HOST } = require('../keys/index');
 
 const transporter = nodemailer.createTransport({
     host: EMAIL_HOST,
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
     auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS,
     },
-    from: 'Mailer test <kirill.deykun1@gmail.com>'
+    from: `<drafttransfer1@gmail.com>`
 })
 
 const mailer = message => {
