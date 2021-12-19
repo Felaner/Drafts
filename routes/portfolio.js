@@ -254,7 +254,7 @@ router.post('/edit', auth, async (req, res) => {
                         .withMetadata()
                         .toFile(dirname + `/${filename}.webp`)
                     Image.create({
-                        src: dirname + `/{filename}.webp`,
+                        src: `images/portfolio/${id} project/${filename}.webp`,
                         name: filename,
                         ProjectId: id
                     }).catch(err => {
